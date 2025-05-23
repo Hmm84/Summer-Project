@@ -3,63 +3,71 @@
     <meta charset="utf-8">
     <title>Past classes</title>
     <style>
+        h3:hover{
+            opacity: 0.5;
+        }
+        
         .container{
             display: grid;
-            grid-template-areas: 
-                "header heaeder"
-                "menu content"
-                "footer footer";
-            grid-template-columns: 1fr 3fr;
-            gap: 5px;
-            background-color: rgb(143, 15, 40);
-            padding: 5px;
-            width: 1000px;
-        }
-
-        .container > div {
-            background-color: rgb(239, 144, 169);
+            grid-template-columns: auto auto auto;
             padding: 10px;
+            gap: 5px; 
+            background:  rgba(239, 144, 169, 0.54);
         }
-
-        .container > div.header {
-            grid-area: header;
+        .container > div {
+            background-color:rgb(241, 241, 241);
+            border: 1px solid black;
+            padding: 5px;
+            font-size: 12px;
             text-align: center;
         }
 
-        .container > div.menu {
-            grid-area: menu;
+        .container > div:hover {
+            opacity = 0.5; 
         }
 
-        .container > div.content {
-            grid-area: content;
-        }
-
-        .container > div.footer {
-            grid-area: footer;
-        }
     </style>
 </head>
 
-<body>
-    <h1> CSS GRID LAYOUT </h1>
+<body style="background-image: url(https://media.istockphoto.com/id/539821468/vector/pink-seamless-gingham-pattern-vector.jpg?s=612x612&w=0&k=20&c=ZgLZQyyeKGQgt4gfaM9njN31XlEbgWopQ46tbOWT9y4=);">
+    
+    <div style="max-width: 500px; align-items: center; margin: auto;">   
+    <h1 style="background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;" > CLASS HISTORY </h1>
+    <div><h2 style="background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;"> Computer Science Classes </h2>
+        <div class=container>
+            <div><h3> Computer Science Experiences </h3> </div>
+            <div><h3> Programming & Data Structures </h3> </div>
+            <div><h3> Object-Oriented Programming </h3> </div>
+            <div><h3> Computer Org & Architecture </h3> </div>
+            <div><h3> System Programming and Tools </h3> </div>
+            <div><h3> Web Full Stack Development </h3> </div>
+            <div><h3> Design & Analysis Algorithms </h3> </div>
+            <div><h3> Intro Cyber Threats </h3> </div>
+            <div><h3> Web Development with Java </h3> </div>
+            <div><h3> Introduction to the Software Profession </h3> </div>
+            <div><h3> Discrete Structures </h3> </div>
+            <div><h3> Computers & Information Systems </h3> </div>
 
-    <div class="container">
-        <div class="header"><h2>My header</h2></div>
-        <div class="menu"><a href="#"> link 1</a><br><a href="#"> link 2</a><br>
-            <a href="#"> link 3</a>
         </div>
-        <div class="content"><h3>content</h3>
-            <p>Lorem ipsum nkodor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.
-            </p>
-        </div>
-        <div class="content" style="position: relative; top: 25px;"><h3>content</h3>
-            <p>Lorem ipsum odjor amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.
-            </p>
-        </div>
-        <div class="content"><h3>content</h3>
-            <p>Lorem ipsum odojhr amet, consectetuer adipiscing elit. Ridiculus sit nisl laoreet facilisis aliquet. Potenti dignissim litora eget montes rhoncus sapien neque urna. Cursus libero sapien integer magnis ligula lobortis quam ut.
-            </p>
-        </div>
-        <div class="footer"><h4>Footer</h4></div>
     </div>
+
+    <div><h2 style="background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;"> Business Classes </h2>
+        <div class=container>
+            <div><h3>  Fundamentals of Financial Accounting </h3> </div>
+            <div><h3> Principles of Microeconomics </h3> </div>
+            <div><h3> Principles of Marketing </h3> </div>
+            <div><h3> Management & Organizational Behavior </h3> </div>
+            <div><h3> Business Ethics </h3> </div>
+            <div><h3> TBD </h3> </div>
+        </div>
+    </div>
+
+    <div><h2 style="background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;"> Fun Mentions </h2>
+        <div class=container>
+            <div><h3> Cosmic Evolution and Introduction to Astronomy </h3> </div>
+            <div><h3> Japanese 1 </h3> </div>
+            <div><h3> Graphic Design I </h3> </div>
+        </div>
+    </div>
+    <div>
 </body>
