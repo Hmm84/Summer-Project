@@ -9,8 +9,18 @@ $names = [
 sort($names); 
 
 $length = count($names); 
+
+echo "<div style='
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
+    font-size: 25px;'>";
+
 for($x = 0; $x < $length; $x++){
-    echo ($x + 1).". ";
-    echo $names[$x];
-    echo "<br>"; 
+    echo "<div style= '  gap: 10px;
+    background-color:rgb(87, 187, 132);
+    border: 1px solid white;
+    border-style:dashed; 
+    text-align: center;'>".$names[$x]."</div>"; 
 }
+echo "</div>"; 
