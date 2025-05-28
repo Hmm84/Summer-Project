@@ -35,7 +35,9 @@
     <h1 style="background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;" > CLASS HISTORY </h1>
     <div><h2 style="background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;"> Computer Science Classes </h2>
         <div class=container>
+            foreach ($post)
             <div><h3> Computer Science Experiences </h3> </div>
+            
             <div><h3> Programming & Data Structures </h3> </div>
             <div><h3> Object-Oriented Programming </h3> </div>
             <div><h3> Computer Org & Architecture </h3> </div>
