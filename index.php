@@ -1,7 +1,7 @@
 <?php 
     include("Include/init.php"); 
     $posts = getAllPosts();
-    $pageTitle = "Main"; 
+    $pageTitle = "Main page"; 
         $common = echoHeader($pageTitle);
         debugOutput($common);
 ?>
@@ -34,6 +34,7 @@
         text-align: center; 
         padding: 8px 16px;
         text-decoration: none;
+        font-family: system-ui;
         }
 
         li a:hover {

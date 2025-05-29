@@ -23,16 +23,22 @@
                     display: grid;
                     grid-template-columns: auto auto auto;
                     padding: 10px;
-                    gap: 5px; 
-                    background:  rgba(239, 144, 169, 0.54);
+                    gap: 5px;
+                    font-size: 45px; 
+                    position: relative; 
+                    right:250px; 
+                    width: 1000px; 
                 }
 
                 .container > div {
-                    background-color:rgb(241, 241, 241);
+                    background-color:rgba(243, 194, 217, 0.54);
                     border: 1px solid black;
                     padding: 5px;
-                    font-size: 12px;
+                    font-size: 15px;
                     text-align: center;
+                    font-family: system-ui;
+                    color: #730d21;  
+
                 }
 
                 .container > div:hover {
@@ -45,12 +51,12 @@
         <body style='background-image: url(https://media.istockphoto.com/id/539821468/vector/pink-seamless-gingham-pattern-vector.jpg?s=612x612&w=0&k=20&c=ZgLZQyyeKGQgt4gfaM9njN31XlEbgWopQ46tbOWT9y4=);'>
             
             <div style='max-width: 500px; align-items: center; margin: auto;'>   
-            <h1 style='background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue;' >".$title."</h1>
+            <h1 style='background: rgb(143, 15, 40); position: relative; right:250px; width: 1000px; padding: 6px; text-align: center; border: 1px solid black; font-family: system-ui; color: aliceblue;' >".$title."</h1>
     ";
     
     $count = 1; 
     foreach($sections as $header => $classes){
-        echo "<div><a href='".$links[$count]."'style='background: rgb(143, 15, 40); padding: 6px; text-align: center; color: aliceblue; display: block; margin: 16px 0 15px 0; font-size:20px; text-decoration: none;'>".$header."</a></div>"; 
+        echo "<div><a href='".$links[$count]."'style='background: rgb(143, 15, 40); position: relative; right:250px; width: 1000px; border: 1px solid black; padding: 6px; text-align: center; font-family: system-ui; color: aliceblue; display: block; margin: 16px 0 15px 0; font-size:25px; text-decoration: none;'>".$header."</a></div>"; 
         
         
         
