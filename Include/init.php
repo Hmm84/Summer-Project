@@ -11,3 +11,5 @@
     include('common_components.php');
     include('posts.php');
     include('helper_functions.php'); 
+    include('comments.php'); 
+    
