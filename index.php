@@ -15,32 +15,6 @@
         margin: 0;
         }
 
-        ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden; 
-        background-color: rgb(96 158 160);
-        border-bottom: 1px double #ffffff;
-        }
-
-        li{
-            float: right; 
-        }
-
-        li a {
-        display: block;
-        color: white;
-        text-align: center; 
-        padding: 8px 16px;
-        text-decoration: none;
-        font-family: system-ui;
-        }
-
-        li a:hover {
-        background-color: #555;
-        }
-
         .titles{
             font-size: 150px;
             color: rgb(255 255 255);
@@ -73,30 +47,45 @@
             border-radius: 31px;
         }
 
-        .container:hover .overlay {
-            opacity: 2; 
+        .image-wrapper:hover .overlay {
+            opacity: 1; 
         }
 
         .overlay {
             position: relative;
-            top: -70px; 
+            top: 44px; 
             left: 75px;
             width: 50%; 
             height: 50%; 
             opacity: 0;
             transition: .5s ease;
-            background-color:rgba(28, 91, 93, 0.8);
          }
           
         .text {
             color:rgb(255, 255, 255);
             font-size: 20px;
             position: absolute;
-            top: 50%;
-            left: 50%;
+            top: 53%;
+            left: 51%;
             transform: translate(-50%, -50%);
             text-align: center;
         }
+
+        img{
+            transition: transform 1s ease, scale 1s ease; 
+        }
+
+        img:hover{
+            /* transform: rotate(45deg);  */
+            scale: 2;
+        }
+
+        .image-wrapper{
+            position: relative; 
+            display: inline-block; 
+        }
+
+
 
 
 
@@ -109,14 +98,15 @@
     <!-- Navigation bar --> 
     <div>
         <ul>
-    <li><a class="active" href="aboutme.php" class="designName"> All about me </a></li>
-        <?php
-            foreach($posts as $index => $post){
-                echo "<li><a href='viewPost.php?postId=".$index."'> ".$post['title']."</a></li>";  
-            }
-            ?> 
-    </ul>
-        </div>
+            <li><a class="active" href="aboutme.php" class="designName"> All about me </a></li>
+            <?php
+                foreach($posts as $index => $post){
+                    echo "<li><a href='viewPost.php?postId=".$index."'> ".$post['title']."</a></li>";  
+                }
+                ?> 
+            <li><a class="active" href="index.php" class="designName"> Main Page </a></li>
+        </ul>
+    </div>
     
     <!-- Gonna boarder center background -->
      <div>
@@ -125,7 +115,7 @@
 
         <!-- images with url to different pages -->
         <div class="container">
-                <div> 
+                <div class="image-wrapper"> 
                     <a href="aboutMe.php"> 
                         <img src="kitty (1).png" style="width:120px;" >
                         <div class="overlay">
@@ -137,7 +127,7 @@
                 <?php
                     foreach($posts as $index => $post){
                         echo "
-                        <div>
+                        <div class='image-wrapper'>
                             <a href='viewPost.php?postId=".$index."'> 
                                 <img src='".$post['Image']."' style='width:110px;' >
                                     <div class='overlay'>

@@ -1,8 +1,18 @@
+<?php
+    include("Include/init.php"); 
+    $posts = getAllPosts();
+    ?>
+
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <title> About me </title>
+    <link rel="stylesheet" href="style.css"> 
     <style>
+        body{
+            margin:0;
+        }
         .title{
             background-color: rgb(143, 15, 40); 
             color: aliceblue; 
@@ -16,12 +26,26 @@
         }
     </style>
 </head>
-<body style='background-image: url(https://media.istockphoto.com/id/539821468/vector/pink-seamless-gingham-pattern-vector.jpg?s=612x612&w=0&k=20&c=ZgLZQyyeKGQgt4gfaM9njN31XlEbgWopQ46tbOWT9y4=);'>
+<body>
     <div class="container"> 
     <!-- Photo album  -->
         
     
     </div>
+
+     <!-- Navigation bar --> 
+     <div>
+        <ul>
+            <li><a class="active" href="aboutme.php" class="designName"> All about me </a></li>
+                <?php
+                    foreach($posts as $index => $post){
+                        echo "<li><a href='viewPost.php?postId=".$index."'> ".$post['title']."</a></li>";  
+                    }
+                ?> 
+            <li><a class="active" href="index.php" class="designName"> Main Page </a></li>
+        </ul>
+    </div>
+    
 
 
 </body>
