@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="style.css"> 
         <style>
             body {
-                background-color: #fefcf6; 
+                background-color: wheat; 
                 color: black; 
                 font-family: sans-serif; 
                 min-height: 100vh;
@@ -47,10 +47,8 @@
                 border-radius: 5px;
                 background-color: #f4f4f4;
                 padding: 20px;
-                width: 415px; 
-                display: flex;
-                flex-direction: column; 
-                justify-content: center;
+                width: 415px;
+                margin: 50%; 
             }
             .form__input {
                 width: clamp(120px, 50vw, 420px);
@@ -84,32 +82,23 @@
                 element.classList.add('show');
                 console.log(element.classList); 
             }
-
-            function ShowHiddenDeleteButton(){
-                const element = document.getElementById("secretKey"); 
-                element.classList.add('show');
-                console.log(element.classList); 
-            }
         </script>
     </head>
 
     <body>
     <div class="container">
             <!-- Form to get comments  -->
-            <h1 style="text-align:center"> Comments </h1>
+            <h1> Comments </h1>
             <div>
                 <form action="" method="post" class="form">
                     <input type="text" placeholder="Name"  name="username" class="form__input" id="name"/>
                     <input type="text" placeholder="Comment"  name="comment" class="form__input" id="Comment"/>
-                    <input type="submit" class="button" value="Comment">
+                    <input type="submit" class="button">
                 </form> 
             </div>
             
             <!-- Form to delete a comment based on the name  -->
-            <a onclick="ShowHiddenDeleteButton()" style="text-align:center; font-size: clamp(1rem, 2vw, 6rem);margin: 15vh 0 2rem; font-weight: bold;" > 
-                Delete Button
-            </a>
-            <div id="secretKey" class="hide">
+            <div>
                 <form action="" method="post" class="form">
                     <input type="text" placeholder="Delete Name" name="delete_username" class="form__input" id="deleteName"/>
                     <input type="submit" value="Delete" class="button" name="delete" style="background-color:red">
@@ -117,7 +106,7 @@
             </div>
             
             <!-- Button to showcase the comment section -->
-            <a onclick="ShowHiddenButton()" style="text-align:center; font-size: clamp(1rem, 2vw, 6rem);margin: 15vh 0 2rem; font-weight: bold;" > 
+            <a onclick="ShowHiddenButton()" style="font-size: clamp(1rem, 2vw, 6rem);margin: 15vh 0 2rem; font-weight: bold;" > 
                 Comments Section 
             </a>
 

@@ -88,3 +88,21 @@ ul {
     li a:hover {
     background-color: #555;
     }
+
+    .form {
+        align-self: center;
+    }
+
+    .button{
+        color: white; 
+        background-color: green; 
+        padding: 5px; 
+        position: relative;
+        left: 168px;
+    }
+
+    .button:hover{
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19); 
+    }
+
+   

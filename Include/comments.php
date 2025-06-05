@@ -16,15 +16,16 @@ function insertComment($userName, $comment){
     // sql injection example 
     dbQuery( 
     "INSERT INTO `Comment`(content, name, datePosted) 
-    VALUES ('$comment','$userName','$dateTimeStirng')
+     VALUES ('$comment','$userName','$dateTimeStirng')
     "); 
 
     
 }
 
-function deleteComment($userName){
+function deleteComment($name){
    dbQuery(
-    "DELETE FROM `Comment` WHERE `name` = $userName"
+    "DELETE FROM `Comment`
+     WHERE `name` = ?", 
+     [$name]
    ); 
-
 }

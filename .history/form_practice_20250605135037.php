@@ -84,12 +84,6 @@
                 element.classList.add('show');
                 console.log(element.classList); 
             }
-
-            function ShowHiddenDeleteButton(){
-                const element = document.getElementById("secretKey"); 
-                element.classList.add('show');
-                console.log(element.classList); 
-            }
         </script>
     </head>
 
@@ -106,10 +100,7 @@
             </div>
             
             <!-- Form to delete a comment based on the name  -->
-            <a onclick="ShowHiddenDeleteButton()" style="text-align:center; font-size: clamp(1rem, 2vw, 6rem);margin: 15vh 0 2rem; font-weight: bold;" > 
-                Delete Button
-            </a>
-            <div id="secretKey" class="hide">
+            <div>
                 <form action="" method="post" class="form">
                     <input type="text" placeholder="Delete Name" name="delete_username" class="form__input" id="deleteName"/>
                     <input type="submit" value="Delete" class="button" name="delete" style="background-color:red">
@@ -117,7 +108,7 @@
             </div>
             
             <!-- Button to showcase the comment section -->
-            <a onclick="ShowHiddenButton()" style="text-align:center; font-size: clamp(1rem, 2vw, 6rem);margin: 15vh 0 2rem; font-weight: bold;" > 
+            <a onclick="ShowHiddenButton()" style="font-size: clamp(1rem, 2vw, 6rem);margin: 15vh 0 2rem; font-weight: bold;" > 
                 Comments Section 
             </a>
 
