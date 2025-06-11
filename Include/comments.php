@@ -29,3 +29,31 @@ function deleteComment($name){
      [$name]
    ); 
 }
+
+function validateUser ($name, $password){
+    $user = dbQuery("
+    SELECT * 
+    FROM `users` 
+    WHERE `name` = '$name'
+    AND `password` = '$password'
+    ")->fetch(); 
+
+    return $user; 
+}
+
+function getAllUsers(){
+    $users = dbQuery("
+        SELECT * FROM `users`
+    ")->fetchAll(); 
+
+    return $users; 
+}
+
+function getUser($userId){   
+    $AllUsers = getAllUsers(); 
+    foreach($AllUsers as $user){
+       if($user['userId'] == $userId){
+        return $user; 
+       }
+    }
+}
