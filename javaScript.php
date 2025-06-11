@@ -17,12 +17,6 @@
     <body>
         <h1> Hello World </h1>
         <script type="text/javascript">
-
-            // for (let index = 0; index < 3; index++){
-            //     const colors = ["red", "yellow", "green"]; 
-            //     console.log("This is current my color: " + colors[index]);
-            // }
-            
             function ShowHiddenButton(){
                 const element = document.getElementById("secretButton"); 
                 element.classList.add('show');
