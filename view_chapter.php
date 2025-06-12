@@ -3,8 +3,7 @@ include("Include/init.php");
 if(!empty($_REQUEST["to_chapter_id"])){
     $chapterId = $_REQUEST["to_chapter_id"];
     $chapter = getChapter($chapterId);
-}
-else if (!empty($_REQUEST["storyId"])){
+} else if (!empty($_REQUEST["storyId"])){
     $storyId = $_REQUEST["storyId"];
     $chapter = getFirstChapter($storyId);
     
@@ -37,16 +36,18 @@ echo "
     
     <body>
         <div class='grid-container'>"; 
-            // opening to the first chapter of each story 
+            // linking to the chapters 
             echo "<div href='viewPost.php?chapterId=".$chapter['chapterId']."'> ".$chapter['title']."</div>
             <div style= 'font-size:19px'>".$chapter['text']."</div> </div>"; 
 
             foreach($choices as $index => $choice){
                echo" <div><a href='view_chapter.php?to_chapter_id=".htmlspecialchars($choice['to_chapter_id'])."'>".$choice['choiceText']."</a></div>"; 
             }
+
+            // output when encounter with the last chapter 
             if($chapter['is_end']){
                 echo "<div> This is the end </div>
-                    <a href='list_stories.php'>Try another story</a>"; 
+                    <a href='index.php'>Try another story</a>"; 
             }
     echo "
         </div>
