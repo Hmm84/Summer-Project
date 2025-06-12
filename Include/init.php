@@ -12,6 +12,6 @@ include('connect.php');
 
 include('db_query.php');
 include('common_components.php');
-include('debugOutput_function.php'); 
+include('backend/debug_output.php'); 
 include('stories.php'); 
 
