@@ -12,13 +12,13 @@
         return $AllStories[$storyId]; 
     }
 
-    function getChapters($chapterId){
-        $chapters = dbQuery("
+    function getChapter($chapterId){
+        $chapter = dbQuery("
         SELECT * 
         FROM `chapters`
         WHERE `chapterId` = $chapterId
         ")->fetch(); 
-        return $chapters; 
+        return $chapter; 
     }
 
     function getFirstChapter($storyId){

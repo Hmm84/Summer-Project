@@ -30,7 +30,7 @@ echo "
 
         // foreach loop to create a link to each story 
         foreach($stories as $index => $story){
-            echo "<div><a href='read_chapter.php?storyId=".$story['storyId']."'>".$story['title']."</a>
+            echo "<div><a href='view_chapter.php?storyId=".$story['storyId']."'>".$story['title']."</a>
                 <div style= 'font-size:19px'>".$story['description']."</div>
             </div>"; 
         }
