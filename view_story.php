@@ -1,6 +1,7 @@
 <?php
 include("Include/init.php"); 
-$stories = getAllStories();
+$storyId = $_REQUEST['storyId']; 
+$story = getStory($storyId); 
 
 echo "
     <!DOCTYPE html
@@ -27,15 +28,12 @@ echo "
     
     <body>
         <div class='grid-container'>"; 
-
-        // foreach loop to create a link to each story 
-        foreach($stories as $index => $story){
-            echo "<div><a href='view_chapter.php?storyId=".$story['storyId']."'>".$story['title']."</a>
-                <div style= 'font-size:19px'>".$story['description']."</div>
-            </div>"; 
-        }
+         // foreach loop to create a list all stories
+         echo "<div href='view_story.php?storyId=".$story['storyId']."'> ".$story['title']."</div>
+         <div style= 'font-size:19px'>".$story['description']."</div> </div>
+         <a href='view_chapter.php?storyId=".$story['storyId']."'> Read This story</a> <br>
+         <a href='index.php'> Go back </a>"; 
 
     echo "
         </div>
     </body>"; 
-    

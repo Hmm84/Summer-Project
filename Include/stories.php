@@ -8,8 +8,12 @@
     }
 
     function getStory($storyId){
-        $AllStories = getAllStories(); 
-        return $AllStories[$storyId]; 
+       $story = dbQuery("
+       SELECT * 
+       FROM `stories` 
+       WHERE `storyId` = $storyId"); 
+
+       return $story->fetch();   
     }
 
     function getChapter($chapterId){
