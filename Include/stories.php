@@ -12,7 +12,8 @@
         SELECT * 
         FROM `stories` 
         WHERE `storyId` = (:storyId)
-        ", [
+        ",
+        [
             'storyId' => $storyId
         ])->fetch();
         return $story; 
@@ -23,7 +24,8 @@
         SELECT * 
         FROM `chapters`
         WHERE `chapterId` = (:chapterId)
-        ", [
+        ",
+        [
             'chapterId' => $chapterId
         ])->fetch(); 
         return $chapter; 
