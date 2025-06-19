@@ -1,0 +1,37 @@
+.bookshelfWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: #5F4629;
+    padding: 30px 30px 50px;
+    
+}
+.shelf {
+    display: flex;
+    gap: 60px;
+    height: 150px;
+    background: #D9D9D9;
+    color: #000;
+    padding: 13px;
+    font-size: 20px;
+    text-align: center;
+    box-shadow: inset 0 -10px 20px #8f8787
+}
+
+.book{
+    background-color: #675677;
+    height: 100%;
+    width: 110px;
+    box-shadow: 5px 10px 10px #454149;
+    
+}
+
+.book a {
+    color: white; 
+    text-decoration: none;
+
+}
+
+.book:hover{
+    background-color: #454149;
+}

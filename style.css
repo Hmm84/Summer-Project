@@ -1,0 +1,45 @@
+            .book {
+                display: flex;
+                width: 1000px;
+                border: 2px solid black;
+                background-color: #f7f3e9;
+                border-radius: 8px;
+                overflow: hidden;
+                font-family: 'Georgia', serif;
+            }
+          
+            .left-page, .right-page {
+                width: 50%;
+                padding: 30px;
+                box-sizing: border-box;
+            }
+          
+            .left-page {
+                border-right: 2px solid #ccc;
+                background-color: #fffdf6;
+            }
+          
+            .right-page {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                justify-content: center;
+                align-items: center;
+                background-color: #fffaf0;
+            }
+          
+            .choice {
+                padding: 15px 25px;
+                background-color: white;
+                border: 2px solid black;
+                border-radius: 10px;
+                text-decoration: none;
+                color: black;
+                font-weight: bold;
+                width: 70%;
+                text-align: center;
+            }
+            
+            .choice:hover {
+                background-color: #eee;
+            }
