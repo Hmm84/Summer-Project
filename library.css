@@ -19,56 +19,56 @@ body {
     top: 0;
     bottom: 0;
     height: 100vh;
-    /* background-color: #5e3f22; */
   }
   
   .left-wall {
-    left: 0;
-    width: 25vw;
-    transform: skewY(-8deg);
-    transform-origin: top left;
-    z-index: 1;
+    width: 40vw;
   }
-  
+
   .center-wall {
     position: absolute;
-    left: 25vw;
-    width: 30vw;
-    height: 100vh;
-    background-color: #5e3f22;
-    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+    height: 635px;
+    left: 600px; 
+    width: 400px;
+    top: 3px;
     display: flex;
     justify-content: center;
-    align-items: center;
   }
   
   .right-wall {
     right: 0;
-    width: 25vw;
-    transform: skewY(8deg);
-    transform-origin: top right;
-    z-index: 1;
+    width: 35vw;
   }
-  
+
+/* .left-wall,
+.right-wall {
+  width: 25%;
+  min-width: 200px;
+} */
+
+
   .bookshelf {
+    top: 4px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 320px; 
-    height: auto; /* Let it grow with content */
-    justify-content: center;
-    align-items: center;
-  }
+    width: 320px;
+    max-height: 622px;
+    overflow-y: auto;
+    height: 50hv;
+    position: absolute;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+    overflow-x: hidden;
+    border-radius: 4px;
+    background-color: #5e3f22;
+}
   
   .book-row {
-    background: #eaeaea;
-    padding: 10px 30px;
-    border-radius: 4px;
+    background: #2a1c0f;
+    padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
-    gap: 40px; /* Increase space between books */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    width: 300px;
+    gap: 25px;
+    box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.4);
   }
   
   .book {
@@ -80,8 +80,8 @@ body {
     justify-content: center;
     text-align: center;
     padding: 4px;
-    border-radius: 4px;
-    box-shadow: inset -2px -2px 6px rgba(255, 255, 255, 0.2),
+    border-radius: 2px;
+    box-shadow: inset -2px -2px 6px rgb(136 100 183),
                 inset 2px 2px 4px rgba(0, 0, 0, 0.4);
     transition: transform 0.2s;
     margin: auto;
@@ -113,45 +113,49 @@ body {
   }
   
   .rug {
-    width: 300px;
-    height: 150px;
+    width: 1000px;
+    height: 157px;
     background: #c3baba;
     border-radius: 50%;
     position: absolute;
     bottom: 10px;
-    left: 50%;
+    left: 52%;
     transform: translateX(-50%);
     z-index: 1;
     opacity: 1;
   }
   
-  .note {
-    position: absolute;
-    width: 60px;
-    height: 80px;
-    background: #cfcaca;
+  .rectangle {
     padding: 5px;
-    font-size: 10px;
-    text-align: center;
     line-height: 80px;
+    height: 75px;
+    width: 200px;
+    background-color: #ffffff;
+    box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+  }
+  .square {
+    height: 50px;
+    width: 50px;
+    background-color: #555;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   }
-  
-  .note-left {
-    left: 10vw;
-    top: 20vh; 
+  .circle {
+    height: 120px;
+    width: 120px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    top: 94px;
+    right: 38px;
+    overflow: hidden;
   }
-  
-  /* .note-right {
-    right: 10vw;
-    top: 25vh;
-  } */
 
-  .bookshelf, .center-wall {
-    z-index: 2;
-  }
-  
-  .left-wall, .right-wall {
-    z-index: 1;
-  }
-  
+  .poster{
+    padding: 5px;
+    line-height: 80px;
+    height: 200px;
+    width: 150px;
+    background-color: #ffffff;
+    box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+}
