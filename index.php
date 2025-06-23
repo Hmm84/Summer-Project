@@ -30,7 +30,7 @@ echo "
 
         // foreach loop to create a list all stories
         foreach($stories as $index => $story){
-            echo "<div><a href='view_story.php?storyId=".$story['storyId']."'>".$story['title']."</a>
+            echo "<div><a href='view_story.php?storyId=$story[storyId]'>$story[title]</a></div>";
             </div>"; 
         }
 
