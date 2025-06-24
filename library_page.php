@@ -29,8 +29,7 @@ echo "
         <div class='grid-container'>"; 
 
         foreach($stories as $index => $story){
-            echo "<div><a href='view_story.php?storyId=$story[storyId]'>$story[title]</a></div>
-            </div>"; 
+            echo "<div><a href='view_story.php?storyId=$story[storyId]'>$story[title]</a></div>"; 
         }
 
     echo "
