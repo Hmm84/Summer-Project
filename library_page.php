@@ -37,7 +37,7 @@ for ($i = 0; $i < $totalRows; $i++) {
         if ($index < $totalBooks) {
             $story = $stories[$index];
             echo "<div class='book'>
-                    <a href='view_story.php?storyId=" . $story['storyId'] . "'>" . $story['title'] . "</a>
+                    <a href='view_story.php?storyId=" .$story['storyId']. "'>" .$story['title']. "</a>
                   </div>";
         } else {
             echo "<div class='book empty'></div>";

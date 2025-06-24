@@ -1,5 +1,5 @@
 <?php
-include("Include/init.php"); 
+include("include/init.php"); 
 $storyId = $_REQUEST['storyId']; 
 $story = getStory($storyId); 
 

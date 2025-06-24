@@ -1,7 +1,7 @@
 <?php
-include("Include/init.php");
-if(!empty($_REQUEST["to_chapter_id"])){
-    $chapterId = $_REQUEST["to_chapter_id"];
+include("include/init.php");
+if(!empty($_REQUEST["toChapterId"])){
+    $chapterId = $_REQUEST["toChapterId"];
     $chapter = getChapter($chapterId);
 }
 else if (!empty($_REQUEST["storyId"])){
@@ -29,14 +29,14 @@ echo "
             <div class='right-page'>"; 
 
             foreach($choices as $index => $choice){
-               echo" <div class='choice'><a href='view_chapter.php?to_chapter_id=".htmlspecialchars($choice['to_chapter_id'])."'>".$choice['choiceText']."</a></div>"; 
+               echo" <div class='choice'><a href='view_chapter.php?toChapterId=".$choice['toChapterId']."'>".$choice['choiceText']."</a></div>"; 
             }
             echo "</div>"; 
             if($chapter['is_end']){
                 echo "<div class='right-page'> 
                     <p>This is the end! </p>
                     <a class='choice'; href='view_chapter.php?storyId=".$chapter['storyId']."'> Read again! </a> <br>
-                    <a class='choice'; href='index.php'>Try another story</a>
+                    <a class='choice'; href=library_page.php'>Try another story</a>
                 </div>"; 
             }
     echo "
