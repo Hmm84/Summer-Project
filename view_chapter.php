@@ -16,7 +16,7 @@ echo "
     <!DOCTYPE html
     <head>
         <meta charset='utf-8'>
-        <link rel='stylesheet' href='style.css'> 
+        <link rel='stylesheet' href='book.css'> 
     </head>
     
     <body>
@@ -36,7 +36,7 @@ echo "
                 echo "<div class='right-page'> 
                     <p>This is the end! </p>
                     <a class='choice'; href='view_chapter.php?storyId=".$chapter['storyId']."'> Read again! </a> <br>
-                    <a class='choice'; href=library_page.php'>Try another story</a>
+                    <a class='choice'; href='library_page.php'>Try another story</a>
                 </div>"; 
             }
     echo "
