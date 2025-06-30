@@ -11,35 +11,17 @@ echo "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta charset='utf-8'>
     <link rel='stylesheet' href='library.css'>
+
     <style>
-    .hidden{
-        opacity: 0;  
+     .glass{
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border:1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
     </style>
-
-    <script>
-        function isOverlapping(el1, el2) {
-        const obj1 = el1.getBoundingClientRect();
-        const obj2 = el2.getBoundingClientRect();
-    
-        return !(
-            obj1.right < obj2.left ||
-            obj1.left > obj2.right ||
-            obj1.bottom < obj2.top ||
-            obj1.top > obj2.bottom
-        );
-        }
-    
-      
-        const bookshelf = document.getElementById('bookshelf');
-        const image = document.getElementById('image');
-    
-        function checkCollisions() {
-            if (isOverlapping(image, bookshelf) {
-                image.classList.add('hidden');
-            }
-        }
-  </script>
 
 </head>
 <body>
@@ -47,22 +29,28 @@ echo "<!DOCTYPE html>
         <div class='room'>
         <div class='wall left-wall'>
       
-            <div class='circle' id='image'>
+            <div class='circle' style='transform: translate(-91px, -227px); order: 1;'>
                 <a href='home_page.php'>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/800px-Fronalpstock_big.jpg'
+                <img src='fireplace.jpg'
                 style='width: 100%; height: 100%; object-fit: cover; ' />
                 </a>
             </div>
 
-            <div class='poster' style='top: 145px; left: 200px; height: 215px; width: 133px;' id='' >
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/800px-Fronalpstock_big.jpg' 
-                style='width: 100%; height: 100%; object-fit: cover;' />
+            <div class='poster' style=' height: 251px; width: 137px; transform: translate(61px, 16px);' >
+                <img src='squirrel in poster.jpg'
+                style='width: 100%; height: 100%; object-fit: cover; ' />
             </div>
 
-            <div class='poster' style='top: 265px; left: 380px;' id='' >
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/800px-Fronalpstock_big.jpg' 
+            <div class='poster' style='transform: translate(14px, -238px);' >
+                <img src='kabaa.jpg' 
                 style='width: 100%; height: 100%; object-fit: cover;' />
             </div>
+            <div class='poster' style='transform: translate(-45px, -26px);;'>
+                <img src='kitten_pari.jpg' 
+                style='width: 100%; height: 100%; object-fit: cover;' />
+            </div>
+            
+
             
         </div>
         <div class='wall center-wall' id='bookshelf'>
@@ -87,20 +75,26 @@ echo "<!DOCTYPE html>
     echo "      </div>
             </div>
         <div class='wall right-wall'>
-            <div class='rectangle' style=' top: 121px; right: 260px;' id=''>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/800px-Fronalpstock_big.jpg' 
-                style='width: 100%; height: 100%; object-fit: cover;' /> 
+            <div class='rectangle' style='height: 255px; width: 323px; transform: translate(62px, -239px);'>
+              <h1> HOW TO PLAY </h1> 
             </div>
 
-            <div class='poster' style='top: 82px; right: 95px;' id=''>
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/800px-Fronalpstock_big.jpg' 
+            <div class='poster' style='transform: translate(-5px, 16px);'>
+                <img src='kitten_heart.jpg' 
                 style='width: 100%; height: 100%; object-fit: cover;' />
+            </div>
+             <div class='circle' style='transform: translate(40px, -66px);'>
+                <img src='beach.jpg'
+                style='width: 100%; height: 100%; object-fit: cover; ' />
+                </a>
             </div>
 
-            <div class='poster' style='top: 241px; right: 290px;' id='' >
-                <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Fronalpstock_big.jpg/800px-Fronalpstock_big.jpg' 
+            <div class='poster' style='transform: translate(-201px, -285px);' >
+                <img src='totoro.jpg' 
                 style='width: 100%; height: 100%; object-fit: cover;' />
             </div>
+           
+
         </div>
     </div>
         <div class='floor'>

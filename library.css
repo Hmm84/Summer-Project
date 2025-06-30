@@ -42,13 +42,19 @@ body, html {
   flex-direction: row;
   width: 100%;
   align-items: stretch;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 23px solid #5e3f22;
 }
 
 .wall {
+  box-shadow: 0 0px 14px rgb(76 49 24);
 }
 
 .left-wall, .right-wall{
   flex-grow: 1;
+  display: flex; 
+  justify-content: space-evenly;
+  align-items: anchor-center; 
 
 }
 
@@ -158,8 +164,18 @@ body, html {
   line-height: 80px;
   height: 166px;
   width: 127px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 10px; /* so border doesn't overlap content */
+
+  background: 
+    linear-gradient(45deg, #d4af37, #fff8dc, #ffd700, #b8860b);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  border: 6px solid transparent;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  
 }
 
 .wall-base {
