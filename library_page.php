@@ -91,9 +91,9 @@ echo "<!DOCTYPE html>
 
         </div>
     </div>
-        <div class='floor' style='background-image: url('floor-wood.jpg'); height: 200px; width: 100%; background-size: cover; background-repeat: no-repeat;'>
-            <div class='rug' style='box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 10px 15px rgba(255, 255, 255, 0.2), inset 0 -5px 10px rgba(0, 0, 0, 0.2);'>
-            <div class='rug' style = 'width: 75%; background: antiquewhite; height: 70%;'></div>
+        <div class='floor'>
+            <div class='rug'>
+            <div class='rug' style = 'width: 75%; background:rgb(232 212 177);'></div>
             </div>
            
         </div>

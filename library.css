@@ -94,17 +94,17 @@ body, html {
 
 .book {
   width: 82px;
-    height: 123px;
-    background: #5a4476;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 4px;
-    border-radius: 2px;
-    box-shadow: inset -2px -2px 6px rgb(136 100 183), inset 2px 2px 4px rgba(0, 0, 0, 0.4);
-    transition: transform 0.2s;
-    margin: auto;
+  height: 123px;
+  background: #72271f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px;
+  border-radius: 2px;
+  box-shadow: inset -2px -2px 6px rgb(123 59 52), inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+  margin: auto;
 }
 
 .book a{
@@ -118,9 +118,9 @@ body, html {
 }
 
 .book.empty {
-  background-color: #5a4476;
-  opacity: 0.4;
-  pointer-events: none;
+    background-color: #72271f;
+    opacity: 0.4;
+    pointer-events: none;
 }
 
 .floor {
@@ -137,13 +137,13 @@ body, html {
 }
   
 .rug {
-  width: 85%;
-  display: flex;
-  height: 85%;
-  background: #c3baba;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
+      width: 85%;
+    display: flex;
+    height: 85%;
+    background: #72271f;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
 }
   
 .rectangle {
