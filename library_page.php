@@ -37,17 +37,14 @@ echo "<!DOCTYPE html>
             </div>
 
             <div class='poster' style=' height: 251px; width: 137px; transform: translate(61px, 16px);' >
-                <img src='squirrel in poster.jpg'
-                style='width: 100%; height: 100%; object-fit: cover; ' />
+                <img src='squirrel in poster.jpg'/>
             </div>
 
             <div class='poster' style='transform: translate(14px, -238px);' >
-                <img src='kabaa.jpg' 
-                style='width: 100%; height: 100%; object-fit: cover;' />
+                <img src='kabaa.jpg'  />
             </div>
             <div class='poster' style='transform: translate(-45px, -26px);;'>
-                <img src='kitten_pari.jpg' 
-                style='width: 100%; height: 100%; object-fit: cover;' />
+                <img src='kitten_pari.jpg'  />
             </div>
             
 
@@ -80,24 +77,21 @@ echo "<!DOCTYPE html>
             </div>
 
             <div class='poster' style='transform: translate(-5px, 16px);'>
-                <img src='kitten_heart.jpg' 
-                style='width: 100%; height: 100%; object-fit: cover;' />
+                <img src='kitten_heart.jpg' />
             </div>
              <div class='circle' style='transform: translate(40px, -66px);'>
-                <img src='beach.jpg'
-                style='width: 100%; height: 100%; object-fit: cover; ' />
+                <img src='beach.jpg' />
                 </a>
             </div>
 
             <div class='poster' style='transform: translate(-201px, -285px);' >
-                <img src='totoro.jpg' 
-                style='width: 100%; height: 100%; object-fit: cover;' />
+                <img src='totoro.jpg'  />
             </div>
            
 
         </div>
     </div>
-        <div class='floor'>
+        <div class='floor' style='background-image: url('floor-wood.jpg'); height: 200px; width: 100%; background-size: cover; background-repeat: no-repeat;'>
             <div class='rug' style='box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), inset 0 10px 15px rgba(255, 255, 255, 0.2), inset 0 -5px 10px rgba(0, 0, 0, 0.2);'>
             <div class='rug' style = 'width: 75%; background: antiquewhite; height: 70%;'></div>
             </div>
