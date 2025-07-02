@@ -6,7 +6,6 @@ $totalRows = 6;
 $booksPerRow = 2;
 
 echo "<!DOCTYPE html>
-<html>
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta charset='utf-8'>
