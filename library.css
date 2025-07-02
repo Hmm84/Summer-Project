@@ -4,32 +4,28 @@ body {
   overflow: hidden;
 }
 
-body, html {
-  height: 100%;
-}
-
-/* @media only screen and (max-width: 1500px) {
-  
-  
-}
-*/
-/* @media only screen and (max-width: 800px) {
-  
-  .bookshelf{
-    width: 1000px;
-    max-height: 1000px;
+ @media only screen and (max-width: 1800px) {
+  body{
+    overflow: auto;
+  }
+  .book-row{
+    flex-wrap: wrap;
+    justify-content: center;
   }
   .center-wall{
     display: block;
   }
   .room{
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+
   }
   .left-wall,
   .right-wall {
-    display: none;
+    display: none !important;
   }
-}  */
+} 
 
 .roomWrapper {
   display: flex;
@@ -59,7 +55,6 @@ body, html {
   display: flex; 
   justify-content: space-evenly;
   align-items: anchor-center; 
-
 }
 
 .center-wall {
@@ -71,16 +66,17 @@ body, html {
 }
 
 .bookshelf {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
-  background-color: #5e3f22;
-  height: 100%; 
-  justify-content: space-around;
-  /* width: 500px;  */
-  border: 14px solid rgb(94 63 34);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+    /* overflow: hidden; */
+    background-color: #5e3f22;
+    /* height: 100%; */
+    /* justify-content: space-around; */
+    /* width: 500px; */
+    border: 14px solid rgb(94 63 34);
+    padding: 10px;
 }
   
 .book-row {
@@ -152,13 +148,13 @@ body, html {
   height: 75px;
   width: 200px;
   background-color: #ffffff;
-  box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25); */
 }
 .square {
   height: 50px;
   width: 50px;
   background-color: #eae4d6;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); */
 }
 
 .circle {
@@ -166,10 +162,10 @@ body, html {
   width: 156px;
   background-color: #ffffff;
   border-radius: 50%;
-  box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25); */
   overflow: hidden;
 
-  border: 8px solid rgb(234 228 214); 
+  border: 8px solid #5e3f22;; 
 }
 
 .poster{
@@ -177,8 +173,8 @@ body, html {
   line-height: 80px;
   height: 166px;
   width: 127px;
-  background-color: oklab(0% 0 0);
-  box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25);
+  background-color: #5e3f22;
+  /* box-shadow: 12px 11px 9px 0px rgba(0, 0, 0, 0.25); */
   
   
   /* border: 8px solid rgb(0, 0, 0); 
