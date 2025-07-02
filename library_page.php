@@ -11,7 +11,7 @@ echo "<!DOCTYPE html>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta charset='utf-8'>
     <link rel='stylesheet' href='library.css'>
-
+       
     <style>
      .glass{
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
@@ -49,9 +49,9 @@ echo "<!DOCTYPE html>
             
 
             
-        </div>
-        <div class='wall center-wall' id='bookshelf'>
-            <div class='bookshelf' >";
+    </div>
+    <div class='wall center-wall' id='bookshelf'>
+        <div class='bookshelf' >";
 
     for ($i = 0; $i < $totalRows; $i++) {
         echo "<div class='book-row'>";
@@ -69,8 +69,8 @@ echo "<!DOCTYPE html>
         echo "</div>";
     }
 
-    echo "      </div>
-            </div>
+    echo "</div>
+        </div>
         <div class='wall right-wall'>
             <div class='rectangle' style='height: 255px; width: 323px; transform: translate(62px, -239px);'>
               <h1> HOW TO PLAY </h1> 
@@ -95,7 +95,6 @@ echo "<!DOCTYPE html>
             <div class='rug'>
             <div class='rug' style = 'width: 75%; background:rgb(232 212 177);'></div>
             </div>
-           
         </div>
     </div>
 </body>
