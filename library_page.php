@@ -58,7 +58,7 @@ echo "<!DOCTYPE html>
         </div>
 
         <div class='wall right-wall'>
-            <div class='rectangle' style='height: 255px; width: 323px; transform: translate(62px, -239px);'>
+            <div class='poster' style='height: 255px; width: 323px; transform: translate(62px, -239px);'>
             <h1> HOW TO PLAY </h1> 
             </div>
 
