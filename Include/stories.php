@@ -13,7 +13,6 @@ function getStory($storyId){
         FROM `stories` 
         WHERE `storyId` = $storyId
     ")->fetch(); 
-
     return $story;    
 }
 
