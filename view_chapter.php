@@ -3,8 +3,7 @@ include("include/init.php");
 if(!empty($_REQUEST["toChapterId"])){
     $chapterId = $_REQUEST["toChapterId"];
     $chapter = getChapter($chapterId);
-}
-else if (!empty($_REQUEST["storyId"])){
+} else if (!empty($_REQUEST["storyId"])){
     $storyId = $_REQUEST["storyId"];
     $chapter = getFirstChapter($storyId);
     
