@@ -1,7 +1,26 @@
 <?php
 include("Include/init.php"); 
 
-$api_key = getnev('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'); 
+$envPath = __DIR__ . '/.env';
+
+if (!file_exists($envPath)) {
+    die("❌ .env file not found at: $envPath");
+}
+
+$env = parse_ini_file($envPath);
+
+if (!$env) {
+    die("❌ .env file exists but failed to load. Maybe formatting is wrong?");
+}
+
+echo "<pre>";
+print_r($env);
+echo "</pre>";
+exit;
+
+// $env = parse_ini_file(__DIR__ . '/.env'); 
+
+$api_key = $env['OPENAI_API_KEY'];
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $test = insert_test($output);
 
-    $notionToken = getnev('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');
+    $notionToken = $env['NOTION_TOKEN']; 
     $databaseId = 'your_database_id_here';
     $title = "Chat Message - " . date("Y-m-d H:i:s");
 
