@@ -1,5 +1,7 @@
 <?php
 include("Include/init.php"); 
+// $env = parse_ini_file('.env'); 
+$api_key ='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'; 
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     insert_test($output);
 
-
+    $notionToken = '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';
+    $databaseId = '22a8f8a6d80380119c89ecc6ab37a9f8?v=22a8f8a6d80380689f8f000c43bfa21c';
     $title = "Chat Message - " . date("Y-m-d H:i:s");
 
     $notionData = [
