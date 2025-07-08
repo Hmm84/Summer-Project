@@ -1,7 +1,7 @@
 <?php
 include("Include/init.php"); 
 
-$api_key = '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'; 
+$api_key = getnev('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'); 
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $test = insert_test($output);
 
-    $notionToken = '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';
+    $notionToken = getnev('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');
     $databaseId = 'your_database_id_here';
     $title = "Chat Message - " . date("Y-m-d H:i:s");
 
