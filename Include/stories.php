@@ -31,8 +31,8 @@ function getFirstChapter($storyId){
     $chapter = dbQuery(" 
         SELECT *
         FROM chapters
-        WHERE StoryId = $storyId 
-        AND is_start = TRUE
+        WHERE storyId = $storyId 
+        AND isStart = TRUE
     ")->fetch(); 
 
     return $chapter; 

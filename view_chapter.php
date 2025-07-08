@@ -16,23 +16,7 @@ echo "
     <!DOCTYPE html
     <head>
         <meta charset='utf-8'>
-
-        <style>
-            .grid-container {
-                display: grid;
-                grid-template-row: auto auto auto auto;
-                gap: 10px;
-                background-color: #d5c2ec;
-                padding: 10px;
-            }
-            .grid-container > div {
-                background-color: #f1f1f1;
-                color: #000;
-                padding: 10px;
-                font-size: 30px;
-                text-align: center;
-            }
-        </style>
+        <link rel='stylesheet' href='style.css'> 
     </head>
     
     <body>
@@ -44,7 +28,7 @@ echo "
             foreach($choices as $index => $choice){
                echo" <div><a href='view_chapter.php?toChapterId=".$choice['toChapterId']."'>".$choice['choiceText']."</a></div>"; 
             }
-            if($chapter['is_end']){
+            if($chapter['isEnd']){
                 echo "<div> This is the end </div>
                 <a href='view_chapter.php?storyId=".$chapter['storyId']."'> Read again! </a> <br>
                     <a href='library_page.php'>Try another story</a>"; 
