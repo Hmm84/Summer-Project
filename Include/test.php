@@ -3,8 +3,8 @@
 function insert_test($text){
    dbquery("
    INSERT INTO `chats`(`text`) 
-   VALUES (':text')", 
+   VALUES (:text)", 
     [
-        'test' => $test
+        ':text' => $text
     ]); 
 }

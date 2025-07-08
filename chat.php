@@ -1,26 +1,7 @@
 <?php
 include("Include/init.php"); 
-
-$envPath = __DIR__ . '/.env';
-
-if (!file_exists($envPath)) {
-    die("❌ .env file not found at: $envPath");
-}
-
-$env = parse_ini_file($envPath);
-
-if (!$env) {
-    die("❌ .env file exists but failed to load. Maybe formatting is wrong?");
-}
-
-echo "<pre>";
-print_r($env);
-echo "</pre>";
-exit;
-
-// $env = parse_ini_file(__DIR__ . '/.env'); 
-
-$api_key = $env['OPENAI_API_KEY'];
+// $env = parse_ini_file('.env'); 
+// $api_key ='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'; 
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -49,10 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $responseData = json_decode($response, true);
     $output = $responseData['choices'][0]['message']['content'] ?? 'No response';
 
-    $test = insert_test($output);
+    insert_test($output);
 
-    $notionToken = $env['NOTION_TOKEN']; 
-    $databaseId = 'your_database_id_here';
+    // $notionToken = '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';
+    // $databaseId = '22a8f8a6d80380119c89ecc6ab37a9f8?v=22a8f8a6d80380689f8f000c43bfa21c';
     $title = "Chat Message - " . date("Y-m-d H:i:s");
 
     $notionData = [
