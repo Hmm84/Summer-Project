@@ -8,3 +8,13 @@ function insert_test($text){
         ':text' => $text
     ]); 
 }
+
+function getAllChats(){
+    $chats= dbQuery("
+        SELECT * FROM `chats`
+    ")->fetchAll(); 
+
+    return $chats; 
+}
+
+
