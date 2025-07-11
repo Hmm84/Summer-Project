@@ -7,43 +7,53 @@ function getAllStories(){
     return $stories; 
 }
 
-function getStory($storyId){
-    $story = dbQuery("
+    function getStory($storyId){
+        $story = dbQuery("
         SELECT * 
         FROM `stories` 
-        WHERE `storyId` = $storyId
-    ")->fetch(); 
-
-    return $story;    
-}
+        WHERE `storyId` = (:storyId)
+        ",
+        [
+            'storyId' => $storyId
+        ])->fetch();
+        return $story; 
+    }
 
 function getChapter($chapterId){
     $chapter = dbQuery("
         SELECT * 
         FROM `chapters`
-        WHERE `chapterId` = $chapterId
-    ")->fetch(); 
+        WHERE `chapterId` = (:chapterId)
+        ",
+        [
+            'chapterId' => $chapterId
+        ])->fetch(); 
+        return $chapter; 
+    }
 
-    return $chapter; 
-}
+    function getFirstChapter($storyId){
 
-function getFirstChapter($storyId){
-    $chapter = dbQuery(" 
-        SELECT *
-        FROM chapters
-        WHERE storyId = $storyId 
-        AND isStart = TRUE
-    ")->fetch(); 
+        $chapter = dbQuery(" 
+         SELECT *
+         FROM chapters
+         WHERE StoryId = (:storyId)
+         AND isStart = TRUE",
+         [
+            'storyId' => $storyId
+         ]); 
 
-    return $chapter; 
-}
+         return $chapter->fetch(); 
+     }
+    
+     function getChoices($chapterId){
 
-function getChoices($chapterId){
-    $choice = dbQuery(" 
-        SELECT * 
-        FROM `choices` 
-        WHERE `fromChapterId` = $chapterId
-    ")->fetchAll(); 
+        $choice = dbQuery(" 
+         SELECT * 
+         FROM `choices` 
+         WHERE `fromChapterId` = (:chapterId)", 
+         [
+            'chapterId' => $chapterId
+         ]); 
 
     return $choice; 
 }
