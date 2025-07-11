@@ -1,7 +1,7 @@
 <?php
-include("Include/init.php");
-if(!empty($_REQUEST["to_chapter_id"])){
-    $chapterId = $_REQUEST["to_chapter_id"];
+include("include/init.php");
+if(!empty($_REQUEST["toChapterId"])){
+    $chapterId = $_REQUEST["toChapterId"];
     $chapter = getChapter($chapterId);
 } else if (!empty($_REQUEST["storyId"])){
     $storyId = $_REQUEST["storyId"];
@@ -15,39 +15,22 @@ echo "
     <!DOCTYPE html
     <head>
         <meta charset='utf-8'>
-
-        <style>
-            .grid-container {
-                display: grid;
-                grid-template-row: auto auto auto auto;
-                gap: 10px;
-                background-color: #d5c2ec;
-                padding: 10px;
-            }
-            .grid-container > div {
-                background-color: #f1f1f1;
-                color: #000;
-                padding: 10px;
-                font-size: 30px;
-                text-align: center;
-            }
-        </style>
+        <link rel='stylesheet' href='style.css'> 
     </head>
     
     <body>
         <div class='grid-container'>"; 
             // linking to the chapters 
-            echo "<div href='viewPost.php?chapterId=".$chapter['chapterId']."'> ".$chapter['title']."</div>
+            echo "<div href='view_chapter.php?chapterId=".$chapter['chapterId']."'> ".$chapter['title']."</div>
             <div style= 'font-size:19px'>".$chapter['text']."</div> </div>"; 
 
             foreach($choices as $index => $choice){
-               echo" <div><a href='view_chapter.php?to_chapter_id=".htmlspecialchars($choice['to_chapter_id'])."'>".$choice['choiceText']."</a></div>"; 
+               echo" <div><a href='view_chapter.php?toChapterId=".$choice['toChapterId']."'>".$choice['choiceText']."</a></div>"; 
             }
-
-            // output when encounter with the last chapter 
-            if($chapter['is_end']){
+            if($chapter['isEnd']){
                 echo "<div> This is the end </div>
-                    <a href='index.php'>Try another story</a>"; 
+                <a href='view_chapter.php?storyId=".$chapter['storyId']."'> Read again! </a> <br>
+                    <a href='library_page.php'>Try another story</a>"; 
             }
     echo "
         </div>

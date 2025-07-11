@@ -1,11 +1,11 @@
 <?php
-    function getAllStories(){
-        $stories = dbQuery("
-            SELECT * FROM `stories`
-        ")->fetchAll(); 
+function getAllStories(){
+    $stories = dbQuery("
+        SELECT * FROM `stories`
+    ")->fetchAll(); 
 
-        return $stories; 
-    }
+    return $stories; 
+}
 
     function getStory($storyId){
         $story = dbQuery("
@@ -19,8 +19,8 @@
         return $story; 
     }
 
-    function getChapter($chapterId){
-        $chapter = dbQuery("
+function getChapter($chapterId){
+    $chapter = dbQuery("
         SELECT * 
         FROM `chapters`
         WHERE `chapterId` = (:chapterId)
@@ -37,7 +37,7 @@
          SELECT *
          FROM chapters
          WHERE StoryId = (:storyId)
-         AND is_start = TRUE",
+         AND isStart = TRUE",
          [
             'storyId' => $storyId
          ]); 
@@ -50,11 +50,11 @@
         $choice = dbQuery(" 
          SELECT * 
          FROM `choices` 
-         WHERE `from_chapter_id` = (:chapterId)", 
+         WHERE `fromChapterId` = (:chapterId)", 
          [
             'chapterId' => $chapterId
          ]); 
 
-         return $choice->fetchAll(); 
-     }
+    return $choice; 
+}
 
