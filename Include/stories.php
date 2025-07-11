@@ -23,7 +23,7 @@ function getChapter($chapterId){
     $chapter = dbQuery("
         SELECT * 
         FROM `chapters`
-        WHERE `chapterId`  (:chapterId)
+        WHERE `chapterId` = (:chapterId)
         ",
         [
             'chapterId' => $chapterId
@@ -58,4 +58,51 @@ function getChoices($chapterId){
 
     return $choice; 
 }
+
+function getAllChapters($storyId){
+    $chapters = dbQuery("
+        SELECT * FROM `chapters`
+        WHERE `storyId` = :storyId",
+        [
+            'storyId' => $storyId
+        ])->fetchAll(); 
+
+    return $chapters; 
+}
+
+function insert_test($text){
+   dbquery("
+   INSERT INTO `chats`(`text`) 
+   VALUES (:text) ", 
+    [
+        'text' => $text
+    ]); 
+}
+
+function getAllChats(){
+    $chats= dbQuery("
+        SELECT * FROM `chats`
+    ")->fetchAll(); 
+
+    return $chats; 
+}
+
+function insertChapter($storyId, $chapter){
+    dbquery("
+        INSERT INTO `chapters`(`title`, `description`, `dateCreated`, `storyId`, `isStart`, `isEnd`)
+        VALUES (:storyId, :title, :description, :isEnd, :dateCreated)",
+        [
+            'storyId' => $storyId,
+            'title' => $chapter['title'],
+            'description' => $chapter['description'],
+            'isEnd' => $chapter['isEnd'] ? 1 : 0,
+            'dateCreated' => date("Y-m-d H:i:s")
+        ]
+    ); 
+
+    return dbLastInsertId();
+}
+
+
+
 
