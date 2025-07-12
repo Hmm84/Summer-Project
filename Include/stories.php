@@ -101,12 +101,12 @@ function insertChapter($storyId, $chapter){
     ]);
 }
 
-function insertChoice( $realNextChapterId, $realChapterId, $choiceText){
+function insertChoice( $fromChapterId, $toChapterId, $choiceText){
     dbquery ( "INSERT INTO `choices`(`fromChapterId`, `toChapterId`, `choiceText`) 
     VALUES (:fromChpaterId, :toChapterId, :choiceText)
     ", [
-        'fromChapterId' =>  $realNextChapterId, 
-        'toChapterId' =>  $realChapterId, 
+        'fromChapterId' =>  $fromChapterId, 
+        'toChapterId' =>  $toChapterId, 
         'choiceText' =>  $choiceText
     ]); 
 }
