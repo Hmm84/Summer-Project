@@ -27,15 +27,56 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $story = getStory($storyId);
     $numChapters = $_REQUEST['numChapters']; 
     // $user_input = $_POST['prompt']; 
-    $prompt = "You are adding the chapters to a story. The title of the story is ".$story["title"]." and here is a short description of what the story should be about".$story['description']."I want you to add only ".$numChapters." chapters to the story.
-        All the chapters should be returned in an array where the numerical key represents the `chapterId` and the value is the chapter itself is an array with the following format. A chapter array should have the following keys: 'title','description', 'isEnd', and 'choices'
-        The title of a chapter is generally brief and somewhat summarizes what happens in the chapter.
-        A chapter description is generally around a paragraph long and should move the plot of the story forward. 
-        Each chapter should end with by offering 2 possible choices one could select to continue the story. The choices should make sense in the context of the chapter it follows. The selected choice should determine what chapter should come next in the story. The choices should be represented as an array under the `choices` key of the chapter object.
-        The choice array should have the keys 'text' and 'nextChapterId'. The 'text' is generally brief and describes an action a character could can make in the story. The 'nextChapterId' represents the next chapter in the story based on the specific action that was taken. This should reference a specific key of the final chapter array that represents that chapters chapterId.
-        Some chapters should be the end of the story, this should be indicated by the `isEnd` property and contain a boolean value (true if the chapter is the end and false if not).
-        A story needs at least 1 chapter that is an ending and each path of selected of choices should eventually lead to an end chapter. If the chapter is an end, it should not have any choices. 
-    ";
+    $prompt = "You are adding chapters to a story. The title of the story is \"".$story["title"]."\" and the description is: \"".$story["description"]."\"
+
+I want you to create only ".$numChapters." new chapters for this story.
+
+⚠️ Important formatting rules:
+- Return ONLY valid JSON — nothing else.
+- DO NOT include any explanation or text before or after the JSON.
+- DO NOT use markdown formatting (no triple backticks like ```json).
+- Use double quotes for all keys and string values (e.g. \"title\", not 'title').
+
+📚 JSON format:
+Return an array of objects where each object uses a chapterId as a key.
+
+Each chapter object must contain the following keys:
+- \"title\": a short string summarizing the chapter
+- \"description\": a paragraph that moves the plot forward
+- \"isEnd\": a boolean (true or false)
+- \"choices\": an array (if isEnd is false), each with:
+    - \"text\": a short action
+    - \"nextChapterId\": integer referring to another chapter
+
+Each choice should logically connect to another chapter.
+At least 1 chapter must be an ending (\"isEnd\": true). Ending chapters should have no \"choices\".
+
+⚠️ Your entire response must be valid JSON.
+- Do NOT include extra text or explanation.
+- Do NOT use triple backticks (```).
+- Your response must start with `[` and end with `]` (a valid JSON array).
+- Ensure all curly braces `{}` and square brackets `[]` are properly closed.
+
+
+Example format:
+[
+  {
+    \"1\": {
+      \"title\": \"Lost Princess\",
+      \"description\": \"...\", 
+      \"isEnd\": false,
+      \"choices\": [
+        {\"text\": \"Go left\", \"nextChapterId\": 2},
+        {\"text\": \"Go right\", \"nextChapterId\": 3}
+      ]
+    }
+  },
+  {
+    \"2\": { ... }
+  }
+]
+";
+;
 
     $data = [
         "model" => "gpt-3.5-turbo",
@@ -61,8 +102,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     $responseData = json_decode($response, true); 
     $outputText = $responseData['choices']['0']['message']['content'] ?? 'No reponse'; 
-    debugOutput($outputText);
-
     // foreach($output as $chapter){
     //     $chapterTitle = $chapter["title"];
     //     $chapterDescription = $chapter["description"];
@@ -75,11 +114,44 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     // }
 
     $chapterIdMap = []; 
-    $output = json_decode($outputText, true);
+    $fixedJson = trim($outputText);
 
-    foreach ($output as $aiChapterId => $chapter) {
-        $realChapterId = insertChapter($storyId, $chapter);  
-        $chapterIdMap[$aiChapterId] = $realChapterId;
+
+    if (substr($fixedJson, -1) !== ']') {
+        $fixedJson .= ']';
+    }
+
+
+    $fixedJson = preg_replace('/,\s*}/', '}', $fixedJson);
+    $fixedJson = preg_replace('/,\s*]/', ']', $fixedJson);
+
+
+    $output = json_decode($fixedJson, true);
+
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        echo "JSON Decode Error: " . json_last_error_msg();
+        echo "<pre>" . htmlentities($fixedJson) . "</pre>";
+    }
+
+
+
+  foreach ($output as $chapterWrapper) {
+        foreach ($chapterWrapper as $aiChapterId => $chapter) {
+            $realChapterId = insertChapter($storyId, $chapter);
+            $chapterIdMap[$aiChapterId] = $realChapterId;
+            if(!empty($chapter['choices'])){
+                foreach ($chapter['choices'] as $choice) {
+                    $choiceText = $choice['text'];
+                    $nextAiChapterId = $choice['nextChapterId'];
+                    $realFromId = $realChapterId;
+                    $realToId = $chapterIdMap[$nextAiChapterId] ?? null;
+
+                    if ($realToId !== null) {
+                        insertChoice($realFromId, $realToId, $choiceText);
+                    }
+                }
+            }
+        }
     }
 
 

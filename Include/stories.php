@@ -88,19 +88,27 @@ function getAllChats(){
 }
 
 function insertChapter($storyId, $chapter){
-    dbquery("
-        INSERT INTO `chapters`(`title`, `description`, `dateCreated`, `storyId`, `isStart`, `isEnd`)
-        VALUES (:storyId, :title, :description, :isEnd, :dateCreated)",
-        [
-            'storyId' => $storyId,
-            'title' => $chapter['title'],
-            'description' => $chapter['description'],
-            'isEnd' => $chapter['isEnd'] ? 1 : 0,
-            'dateCreated' => date("Y-m-d H:i:s")
-        ]
-    ); 
+    dbQuery("
+        INSERT INTO `chapters` (`title`, `description`, `dateCreated`, `storyId`, `isStart`, `isEnd`)
+        VALUES (:title, :description, :dateCreated, :storyId, :isStart, :isEnd)
+    ", [
+        'title' => $chapter['title'],
+        'description' => $chapter['description'],
+        'dateCreated' => date("Y-m-d H:i:s"),
+        'storyId' => $storyId,
+        'isStart' => 0, 
+        'isEnd' => $chapter['isEnd'] ? 1 : 0
+    ]);
+}
 
-    return dbLastInsertId();
+function insertChoice( $realNextChapterId, $realChapterId, $choiceText){
+    dbquery ( "INSERT INTO `choices`(`fromChapterId`, `toChapterId`, `choiceText`) 
+    VALUES (:fromChpaterId, :toChapterId, :choiceText)
+    ", [
+        'fromChapterId' =>  $realNextChapterId, 
+        'toChapterId' =>  $realChapterId, 
+        'choiceText' =>  $choiceText
+    ]); 
 }
 
 
