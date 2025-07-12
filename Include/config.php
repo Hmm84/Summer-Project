@@ -1,3 +1,0 @@
-<?php
-
-define("API_KEY", "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"); 
