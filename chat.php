@@ -2,81 +2,68 @@
 include("Include/init.php"); 
 
 $stories = getAllStories(); 
-// $storyId = $_REQUEST['stories']; 
-// $chapters = getAllChapters($storyId); 
-// debugOutput($chapters); 
 
-// $chapterSummary = ""; 
-// foreach($chapters as $chapter){
-//     $chapterSummary .= "Chapter {$chapter['chapterId']}: {$chapter['title']} - {$chapter['description']}\n";
-// }
 
-// debugOutput($chapterSummary); 
-
-// $prompt = "
-//     You are continuing a story. there are the existing chapters:
-//     $chapterSummary 
-//     write 3 new cahpters. one should be an ending the others should include choices that lead to other chapters
-// "; 
-
-// debugOutput($prompt); 
-
-// $env = parse_ini_file('.env'); 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $storyId = $_REQUEST['storyId'];
+    $oldChapters = getAllChapters($storyId);
+    $oldChapterIdMap = [];
+    foreach ($oldChapters as $oldChapter) {
+        $oldChapterIdMap[$oldChapter['chapterId']] = $oldChapter['chapterId'];
+    }
     $story = getStory($storyId);
     $numChapters = $_REQUEST['numChapters']; 
-    // $user_input = $_POST['prompt']; 
     $prompt = "You are adding chapters to a story. The title of the story is \"".$story["title"]."\" and the description is: \"".$story["description"]."\"
 
-I want you to create only ".$numChapters." new chapters for this story.
+    I want you to create only ".$numChapters." new chapters for this story.
 
-⚠️ Important formatting rules:
-- Return ONLY valid JSON — nothing else.
-- DO NOT include any explanation or text before or after the JSON.
-- DO NOT use markdown formatting (no triple backticks like ```json).
-- Use double quotes for all keys and string values (e.g. \"title\", not 'title').
+    ⚠️ Important formatting rules:
+    - Return ONLY valid JSON — nothing else.
+    - DO NOT include any explanation or text before or after the JSON.
+    - DO NOT use markdown formatting (no triple backticks like ```json).
+    - Use double quotes for all keys and string values (e.g. \"title\", not 'title').
 
-📚 JSON format:
-Return an array of objects where each object uses a chapterId as a key.
+    JSON format:
+    Return an array of objects where each object uses a chapterId as a key.
 
-Each chapter object must contain the following keys:
-- \"title\": a short string summarizing the chapter
-- \"description\": a paragraph that moves the plot forward
-- \"isEnd\": a boolean (true or false)
-- \"choices\": an array (if isEnd is false), each with:
-    - \"text\": a short action
-    - \"nextChapterId\": integer referring to another chapter
+    Each chapter object must contain the following keys:
+    - \"title\": a short string summarizing the chapter
+    - \"description\": a paragraph that moves the plot forward
+    - \"isEnd\": a boolean (true or false)
+    - \"choices\": an array (if isEnd is false), each with:
+        - \"text\": a short action
+        - \"nextChapterId\": integer referring to another chapter
 
-Each choice should logically connect to another chapter.
-At least 1 chapter must be an ending (\"isEnd\": true). Ending chapters should have no \"choices\".
+    Each choice should logically connect to another chapter.
+    At least 1 chapter must be an ending (\"isEnd\": true). Ending chapters should have no \"choices\".
 
-⚠️ Your entire response must be valid JSON.
-- Do NOT include extra text or explanation.
-- Do NOT use triple backticks (```).
-- Your response must start with `[` and end with `]` (a valid JSON array).
-- Ensure all curly braces `{}` and square brackets `[]` are properly closed.
+    Your entire response must be valid JSON.
+    - Do NOT include extra text or explanation.
+    - Do NOT use triple backticks (```).
+    - Your response must start with `[` and end with `]` (a valid JSON array).
+    - Ensure all curly braces `{}` and square brackets `[]` are properly closed.
 
 
-Example format:
-[
-  {
-    \"1\": {
-      \"title\": \"Lost Princess\",
-      \"description\": \"...\", 
-      \"isEnd\": false,
-      \"choices\": [
-        {\"text\": \"Go left\", \"nextChapterId\": 2},
-        {\"text\": \"Go right\", \"nextChapterId\": 3}
-      ]
+    Example format:
+    [
+    {
+        \"1\": {
+        \"title\": \"Lost Princess\",
+        \"description\": \"...\", 
+        \"isEnd\": false,
+        \"choices\": [
+            {\"text\": \"Go left\", \"nextChapterId\": 2},
+            {\"text\": \"Go right\", \"nextChapterId\": 3}
+        ]
+        }
+    },
+    {
+        \"2\": { ... }
     }
-  },
-  {
-    \"2\": { ... }
-  }
-]
-";
-;
+    ]
+
+    Remember: NO vague writing. Be specific in every chapter description. Include named characters, actions, and clearly described scenes
+    ";
 
     $data = [
         "model" => "gpt-3.5-turbo",
@@ -102,17 +89,7 @@ Example format:
 
     $responseData = json_decode($response, true); 
     $outputText = $responseData['choices']['0']['message']['content'] ?? 'No reponse'; 
-    // foreach($output as $chapter){
-    //     $chapterTitle = $chapter["title"];
-    //     $chapterDescription = $chapter["description"];
-    //     if(!empty($chapter['choices'])){
-    //         foreach ($chapter["choices"] as $choice){
-    //             $choiceText = $choce["text"]
-    //             $nextChapterId = 
-    //         }
-    //     }
-    // }
-
+ 
     $chapterIdMap = []; 
     $fixedJson = trim($outputText);
 
@@ -127,35 +104,56 @@ Example format:
 
 
     $output = json_decode($fixedJson, true);
+    debugOutput($output); 
 
     if (json_last_error() !== JSON_ERROR_NONE) {
         echo "JSON Decode Error: " . json_last_error_msg();
         echo "<pre>" . htmlentities($fixedJson) . "</pre>";
     }
 
+    $chapterIdMap = [];
 
 
-  foreach ($output as $chapterWrapper) {
+    foreach ($output as $chapterWrapper) {
         foreach ($chapterWrapper as $aiChapterId => $chapter) {
-            $realChapterId = insertChapter($storyId, $chapter);
+            insertChapter($storyId, $chapter);  
+            $realChapterId = getLastInsertedId();  
             $chapterIdMap[$aiChapterId] = $realChapterId;
-            if(!empty($chapter['choices'])){
+        }
+    }
+
+
+    foreach ($output as $chapterWrapper) {
+        foreach ($chapterWrapper as $aiChapterId => $chapter) {
+            if (!empty($chapter['choices'])) {
+                $realFromId = $chapterIdMap[$aiChapterId] ?? null;
+
                 foreach ($chapter['choices'] as $choice) {
                     $choiceText = $choice['text'];
                     $nextAiChapterId = $choice['nextChapterId'];
-                    $realFromId = $realChapterId;
                     $realToId = $chapterIdMap[$nextAiChapterId] ?? null;
 
-                    if ($realToId !== null) {
+                    if ($realFromId !== null && $realToId !== null) {
                         insertChoice($realFromId, $realToId, $choiceText);
-                    }
+                    } 
                 }
             }
         }
     }
 
+    $oldAIId = 3;
+    $newAIId = 7;
+    $choiceText = "Venture into the mysterious cave";
 
-    // insert_test($output);
+    // Check that both chapters exist in maps
+    if (isset($oldChapterIdMap[$oldAIId]) && isset($chapterIdMap[$newAIId])) {
+        $oldRealId = $oldChapterIdMap[$oldAIId];
+        $newRealId = $chapterIdMap[$newAIId];
+
+        // Insert choice from old to new chapter
+        insertChoice($oldRealId, $newRealId, $choiceText);
+    }
+
 
     // $notionToken = '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';
     // $databaseId = '22a8f8a6d80380119c89ecc6ab37a9f8';

@@ -21,7 +21,7 @@ echo "
 
             <div class='right-page'>
                 <a class='choice'; href='view_chapter.php?storyId=".$story['storyId']."'> Read This story</a> <br>
-                <a class ='choice'; href='index.php'> Go back </a>
+                <a class ='choice'; href='library_page.php'> Go back </a>
             </div>
         </div>
     </body>"; 

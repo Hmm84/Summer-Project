@@ -87,6 +87,11 @@ function getAllChats(){
     return $chats; 
 }
 
+function getLastInsertedId() {
+    global $pdo; 
+    return $pdo->lastInsertId();
+}
+
 function insertChapter($storyId, $chapter){
     dbQuery("
         INSERT INTO `chapters` (`title`, `description`, `dateCreated`, `storyId`, `isStart`, `isEnd`)
@@ -99,17 +104,30 @@ function insertChapter($storyId, $chapter){
         'isStart' => 0, 
         'isEnd' => $chapter['isEnd'] ? 1 : 0
     ]);
+
+    return getLastInsertedId(); 
 }
 
 function insertChoice( $fromChapterId, $toChapterId, $choiceText){
     dbquery ( "INSERT INTO `choices`(`fromChapterId`, `toChapterId`, `choiceText`) 
-    VALUES (:fromChpaterId, :toChapterId, :choiceText)
+    VALUES (:fromChapterId, :toChapterId, :choiceText)
     ", [
         'fromChapterId' =>  $fromChapterId, 
         'toChapterId' =>  $toChapterId, 
         'choiceText' =>  $choiceText
     ]); 
 }
+
+function markChapterAsNotEnd($chapterId) {
+    dbQuery("
+        UPDATE `chapters`
+        SET `isEnd` = 0
+        WHERE `chapterId` = :chapterId
+    ", [
+        'chapterId' => $chapterId
+    ]);
+}
+
 
 
 

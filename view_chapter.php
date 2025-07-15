@@ -20,10 +20,9 @@ echo "
     
     <body>
         <div class='book'>"; 
-            // linking to the chapters 
             echo "<div class='left-page'; href='view_chapter.php?chapterId=".$chapter['chapterId']."'>
             <h2>".$chapter['title']."</h2>
-            <p>".$chapter['text']."</p></div>
+            <p>".$chapter['description']."</p></div>
             
             <div class='right-page'>"; 
 
@@ -31,7 +30,7 @@ echo "
                echo" <div class='choice'><a href='view_chapter.php?toChapterId=".$choice['toChapterId']."'>".$choice['choiceText']."</a></div>"; 
             }
             echo "</div>"; 
-            if($chapter['is_end']){
+            if($chapter['isEnd']){
                 echo "<div class='right-page'> 
                     <p>This is the end! </p>
                     <a class='choice'; href='view_chapter.php?storyId=".$chapter['storyId']."'> Read again! </a> <br>
