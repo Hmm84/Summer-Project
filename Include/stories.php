@@ -23,7 +23,7 @@ function getChapter($chapterId){
     $chapter = dbQuery("
         SELECT * 
         FROM `chapters`
-        WHERE `chapterId`  (:chapterId)
+        WHERE `chapterId` = (:chapterId)
         ",
         [
             'chapterId' => $chapterId
@@ -32,13 +32,14 @@ function getChapter($chapterId){
         return $chapter; 
     }
 
+
     function getFirstChapter($storyId){
 
         $chapter = dbQuery(" 
          SELECT *
          FROM chapters
          WHERE StoryId = (:storyId)
-         AND is_start = TRUE",
+         AND isStart = TRUE",
          [
             'storyId' => $storyId
          ])->fetch(); 

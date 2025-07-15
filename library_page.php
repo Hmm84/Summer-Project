@@ -1,5 +1,5 @@
 <?php
-include("Include/init.php"); 
+include("include/init.php"); 
 $stories = getAllStories();
 $totalBooks = count($stories);
 $totalRows = 6;
