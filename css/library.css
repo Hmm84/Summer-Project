@@ -17,7 +17,7 @@ body {
   align-items: stretch;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
   border-bottom: 23px solid #5e3f22;
-  background-image: url(wallpaper.jpg);
+  background-image: url(../images/wallpaper.jpg);
   background-size: 220px; 
   flex: 4; 
 }

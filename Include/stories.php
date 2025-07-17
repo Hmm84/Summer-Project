@@ -52,7 +52,7 @@ function getChapter($chapterId){
         $choice = dbQuery(" 
          SELECT * 
          FROM `choices` 
-         WHERE `fromChapterId =  (:chapterId)", 
+         WHERE `fromChapterId` =  (:chapterId)", 
          [
             'chapterId' => $chapterId
          ])->fetchAll(); 
