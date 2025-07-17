@@ -6,19 +6,21 @@ $stories = getAllStories();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $storyId = $_REQUEST['storyId'];
+
     $oldChapters = getAllChapters($storyId);
     $oldChapterIdMap = [];
     foreach ($oldChapters as $oldChapter) {
         $oldChapterIdMap[$oldChapter['chapterId']] = $oldChapter['chapterId'];
     }
+
     $story = getStory($storyId);
     $numChapters = $_REQUEST['numChapters']; 
     $prompt = "You are adding chapters to a story. The title of the story is \"".$story["title"]."\" and the description is: \"".$story["description"]."\"
 
-    I want you to create only ".$numChapters." new chapters for this story.
+    I want you to create only ".$numChapters." new chapters for this story. I would like to 
 
-    ⚠️ Important formatting rules:
-    - Return ONLY valid JSON — nothing else.
+    Important formatting rules:
+    - Return ONLY valid JSON nothing else.
     - DO NOT include any explanation or text before or after the JSON.
     - DO NOT use markdown formatting (no triple backticks like ```json).
     - Use double quotes for all keys and string values (e.g. \"title\", not 'title').
@@ -34,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         - \"text\": a short action
         - \"nextChapterId\": integer referring to another chapter
 
-    Each choice should logically connect to another chapter.
+    Each choice should logically connect to another existing chapter. If the choice is created it should lead to another chapter even if the amount of chapters goes over the numbers asked by the user. This is the only reason why the number of chapters created can go up but for no other reason should this happen other then connecting an exisiting choice to an existing chapter.
     At least 1 chapter must be an ending (\"isEnd\": true). Ending chapters should have no \"choices\".
 
     Your entire response must be valid JSON.
@@ -90,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $responseData = json_decode($response, true); 
     $outputText = $responseData['choices']['0']['message']['content'] ?? 'No reponse'; 
  
-    $chapterIdMap = []; 
+
     $fixedJson = trim($outputText);
 
 
@@ -139,19 +141,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 }
             }
         }
-    }
-
-    $oldAIId = 3;
-    $newAIId = 7;
-    $choiceText = "Venture into the mysterious cave";
-
-    // Check that both chapters exist in maps
-    if (isset($oldChapterIdMap[$oldAIId]) && isset($chapterIdMap[$newAIId])) {
-        $oldRealId = $oldChapterIdMap[$oldAIId];
-        $newRealId = $chapterIdMap[$newAIId];
-
-        // Insert choice from old to new chapter
-        insertChoice($oldRealId, $newRealId, $choiceText);
     }
 
 
@@ -206,8 +195,16 @@ echo "<!DOCTYPE html>
                 echo "<option value=".$story['storyId'].">".$story['title']."</option>"; 
             }
         echo "</select> 
-        <label>How many chapters should be added to this story?:</label>
+        <label>How many chapters should be added to this story :</label>
         <input type='number' name='numChapters' required>
+        <label>How many good endings should be added to this story:</label>
+        <input type='number' name='endings' required>
+        <label>How many bad endings should be added to this story:</label>
+        <input type='number' name='endings' required>
+        <label>What tone to go for:</label>
+        <input type='text' name='tone' required>
+        <label>Other details of the story:</label>
+        <input type='text' name='tone' required>
          <button type='submit'>Send</button>
          </form>
         ";

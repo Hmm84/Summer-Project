@@ -59,6 +59,7 @@ function getChoices($chapterId){
     return $choice; 
 }
 
+
 function getAllChapters($storyId){
     $chapters = dbQuery("
         SELECT * FROM `chapters`
