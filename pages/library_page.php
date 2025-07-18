@@ -9,6 +9,7 @@ echo "<!DOCTYPE html>
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <meta charset='utf-8'>
+    <link rel='stylesheet' href='../css/book.css'> 
     <link rel='stylesheet' href='../css/library.css'> 
 </head>
 
@@ -18,20 +19,20 @@ echo "<!DOCTYPE html>
             <div class='wall left-wall'>
                 <div class='square' style='transform: translate(-91px, -227px); order: 1;'>
                     <a href='home_page.php'>
-                    <img src='../images/fireplace.jpg'
+                    <img class='img-poster'src='../images/fireplace.jpg'
                     style='width: 100%; height: 100%; object-fit: cover; ' />
                     </a>
                 </div>
 
                 <div class='poster' style=' height: 251px; width: 137px; transform: translate(61px, 16px);' >
-                    <img src='../images/squirrel in poster.jpg'/>
+                    <img class='img-poster'src='../images/squirrel in poster.jpg'/>
                 </div>
 
                 <div class='poster' style='transform: translate(14px, -238px);' >
-                    <img src='../images/kabaa.jpg'  />
+                    <img class='img-poster'src='../images/kabaa.jpg'  />
                 </div>
                 <div class='poster' style='transform: translate(-45px, -26px);;'>
-                    <img src='../images/kitten_pari.jpg'  />
+                    <img class='img-poster'src='../images/kitten_pari.jpg'  />
                 </div>
         </div>
 
@@ -63,15 +64,15 @@ echo "<!DOCTYPE html>
             </div>
 
             <div class='square' style='transform: translate(-5px, 16px);'>
-                <img src='../images/kitten_heart.jpg' />
+                <img class='img-poster'src='../images/kitten_heart.jpg' />
             </div>
             <div class='poster' style='transform: translate(40px, -66px);'>
-                <img src='../images/beach.jpg' />
+                <img class='img-poster'src='../images/beach.jpg' />
                 </a>
             </div>
 
             <div class='poster' style='transform: translate(-201px, -285px);' >
-                <img src='../images/totoro.jpg'  />
+                <img class='img-poster'src='../images/totoro.jpg'  />
             </div>
             </div>
         </div>

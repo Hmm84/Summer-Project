@@ -7,7 +7,9 @@ echo "
     <!DOCTYPE html
     <head>
         <meta charset='utf-8'>
+        <link rel='stylesheet' href='../css/library.css'> 
         <link rel='stylesheet' href='book.css'> 
+       
 
     </head>
     

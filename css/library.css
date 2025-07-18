@@ -102,7 +102,6 @@ body {
   display: flex; 
   justify-content: center;
   align-items: center;
-  background-image: url('floor-wood.jpg');
   background-size: cover; 
   background-repeat: no-repeat;
   height: 100px;
@@ -149,7 +148,7 @@ body {
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
 }
 
-img{
+.img-poster{
   width: 100%; 
   height: 100%; 
   object-fit: cover; 
@@ -171,16 +170,16 @@ img{
   }
   .left-wall,
   .right-wall {
-    display: none !important;
+    display: none;
   }
 } 
 
 @media only screen and (max-width: 400px){
   .floor{
-    display: none !important;
+    display: none;
   }
   .center-wall{
-    overflow: visible ! IMPORTANT;
+    overflow: visible;
     height: 100%;
   }
   .room{
