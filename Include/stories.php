@@ -37,8 +37,8 @@ function getChapter($chapterId){
 
         $chapter = dbQuery(" 
          SELECT *
-         FROM chapters
-         WHERE StoryId = (:storyId)
+         FROM `chapters`
+         WHERE `storyId` = (:storyId)
          AND isStart = TRUE",
          [
             'storyId' => $storyId
