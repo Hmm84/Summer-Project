@@ -5,7 +5,7 @@ $totalBooks = count($stories);
 $totalRows = 6;
 $booksPerRow = 2;
 echoHeader("homePage"); 
-echoFooter(); 
+
 
 echo "<div class='roomWrapper'> 
     <div class='room'>
@@ -75,3 +75,5 @@ echo "<div class='roomWrapper'>
         </div>
     </div>
 </div>"; 
+
+echoFooter(); 

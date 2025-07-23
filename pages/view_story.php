@@ -1,7 +1,6 @@
 <?php
 include("../include/init.php");
 echoHeader("homePage"); 
-echoFooter(); 
 
 if (!empty($_REQUEST["storyId"]) && !isset($_GET["read"])) {
     $storyId = $_REQUEST["storyId"];
@@ -56,3 +55,4 @@ echo "<div class='book'>";
         </div>
         "; } echo " 
 </div>"; 
+echoFooter(); 
