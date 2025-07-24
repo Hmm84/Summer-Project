@@ -4,7 +4,10 @@ function echoHeader($pageTitle){
 	echo "<html>
 		<head>
 			<title>".$pageTitle."</title>
-			<link rel='stylesheet' type='text/css' href='/style.css'
+			<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			<meta charset='utf-8'>
+			<link rel='stylesheet' href='../css/book.css'> 
+			<link rel='stylesheet' href='../css/library.css'> 
 		</head>
 		<body>
 	"; 
