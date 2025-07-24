@@ -1,2 +1,2 @@
 <?php
-define("API_KEY", ""); 
+define("API_KEY", "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"); 

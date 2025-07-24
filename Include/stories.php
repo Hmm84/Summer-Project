@@ -71,15 +71,6 @@ function getAllChapters($storyId){
     return $chapters; 
 }
 
-function insert_test($text){
-   dbquery("
-   INSERT INTO `chats`(`text`) 
-   VALUES (:text) ", 
-    [
-        'text' => $text
-    ]); 
-}
-
 function getAllChats(){
     $chats= dbQuery("
         SELECT * FROM `chats`
@@ -102,7 +93,7 @@ function insertChapter($storyId, $chapter){
         'description' => $chapter['description'],
         'dateCreated' => date("Y-m-d H:i:s"),
         'storyId' => $storyId,
-        'isStart' => 0, 
+        'isStart' => $chapter['isStart'] ? 1 : 0, 
         'isEnd' => $chapter['isEnd'] ? 1 : 0
     ]);
 
