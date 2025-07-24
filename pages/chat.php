@@ -247,7 +247,10 @@ echo "<!DOCTYPE html>
      <link rel='stylesheet' href='../css/chat.css'> 
     <title>Chat API Test</title>
 </head>
-<body> 
+<body>
+
+
+
      <form method='POST' action='pages/chat.php'class='form-box'>
         <label> Create a Story </label>
         <label for='stories'> Story: </label>

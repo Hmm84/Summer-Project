@@ -2,6 +2,7 @@
 function getAllStories(){
     $stories = dbQuery("
         SELECT * FROM `stories`
+        WHERE dateArchive IS NULL 
     ")->fetchAll(); 
 
     return $stories; 
@@ -12,6 +13,7 @@ function getStory($storyId){
     SELECT * 
     FROM `stories` 
     WHERE `storyId` = (:storyId)
+    AND dateArchive IS NULL
     ",
     [
         'storyId' => $storyId
@@ -35,9 +37,11 @@ function getChapter($chapterId){
 function getFirstChapter($storyId){
 
     $chapter = dbQuery(" 
-        SELECT *
+        SELECT chapters.*
         FROM `chapters`
-        WHERE `storyId` = (:storyId)
+        JOIN stories ON stories.storyId = chapters.storyId
+        WHERE `chapters.storyId` = (:storyId)
+        AND `stories.dateArchive` IS NULL
         AND `isStart` = TRUE",
         [
             'storyId' => $storyId
@@ -118,6 +122,27 @@ function markChapterAsNotEnd($chapterId) {
     ", [
         'chapterId' => $chapterId
     ]);
+}
+
+function archiveStory($storyId){
+    dbquery("
+    UPDATE `stories`
+    SET `dateArchive` = :dateArchive
+    WHERE `storyId` = :storyId
+    ", [
+        'dateArchive' => date("Y-m-d H:i:s"), 
+        'storyId' => $storyId
+    ]); 
+}
+
+function createStory($title, $description){
+    dbquery("
+        INSERT INTO `stories` (`title`, `description`, `dateCreated`) 
+        VALUES (:title, :description, :dateCreated)", [
+            'title' => $title,
+            'description' => $description,
+            'dateCreated' => date("Y-m-d H:i:s")
+        ]); 
 }
 
 
