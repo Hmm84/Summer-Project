@@ -28,9 +28,36 @@ $pdo = new PDO($dsn, DB_USERNAME, DB_PASSWORD, $opt);
 * Other note: if we need to specify the data type, check this out: http://php.net/manual/en/pdostatement.bindvalue.php
 */
 
-function dbQuery($query, $values=array()){
+// function dbQuery($query, $values=array()){
+//     global $pdo;
+//     $stmt = $pdo->prepare($query);
+//     $stmt->execute($values);
+//     return $stmt; // To get data out, use ->fetch() for one row or ->fetchAll() for all row
+// }
+
+// function dbQuery($sql, $params = []) {
+//     global $pdo; // or however you access your PDO connection
+//     $stmt = $pdo->prepare($sql);
+//     $stmt->execute($params);
+
+//     if (stripos(trim($sql), 'insert') === 0) {
+//         return $pdo->lastInsertId();
+//     }
+
+//     return $stmt;
+// }
+
+function dbQuery($query, $values = []) {
     global $pdo;
     $stmt = $pdo->prepare($query);
     $stmt->execute($values);
-    return $stmt; // To get data out, use ->fetch() for one row or ->fetchAll() for all row
+
+    // Check if the query is an INSERT statement
+    if (stripos(trim($query), 'insert') === 0) {
+        return $pdo->lastInsertId();
+    }
+
+    // For other queries, return the statement object as before
+    return $stmt;
 }
+
