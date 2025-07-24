@@ -4,7 +4,7 @@ $stories = getAllStories();
 $totalBooks = count($stories);
 $totalRows = 6;
 $booksPerRow = 2;
-echoHeader("homePage"); 
+echoHeader("homePage", "libraryBody"); 
 
 
 echo "<div class='roomWrapper'> 

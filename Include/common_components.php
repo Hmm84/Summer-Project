@@ -1,6 +1,6 @@
 <?php
 
-function echoHeader($pageTitle){ 
+function echoHeader($pageTitle, $bodyClasses = ""){ 
 	echo "<html>
 		<head>
 			<title>".$pageTitle."</title>
@@ -8,8 +8,9 @@ function echoHeader($pageTitle){
 			<meta charset='utf-8'>
 			<link rel='stylesheet' href='../css/book.css'> 
 			<link rel='stylesheet' href='../css/library.css'> 
+			<link rel='stylesheet' href='../css/chat.css'> 
 		</head>
-		<body>
+		<body class='$bodyClasses'>
 	"; 
 }
 
