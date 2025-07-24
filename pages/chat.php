@@ -1,6 +1,6 @@
 <?php
 set_time_limit(500); 
-include("Include/init.php"); 
+include("../Include/init.php"); 
 
 $stories = getAllStories(); 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -244,11 +244,11 @@ echo "<!DOCTYPE html>
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-     <link rel='stylesheet' href='chat.css'> 
+     <link rel='stylesheet' href='../css/chat.css'> 
     <title>Chat API Test</title>
 </head>
 <body> 
-     <form method='POST' action='chat.php'class='form-box'>
+     <form method='POST' action='pages/chat.php'class='form-box'>
         <label> Create a Story </label>
         <label for='stories'> Story: </label>
         <select id='stories' name='storyId'>";
