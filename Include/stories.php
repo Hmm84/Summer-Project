@@ -28,21 +28,23 @@ function getChapter($chapterId){
         [
             'chapterId' => $chapterId
         ])->fetch(); 
+
         return $chapter; 
     }
+
 
     function getFirstChapter($storyId){
 
         $chapter = dbQuery(" 
          SELECT *
-         FROM chapters
-         WHERE StoryId = (:storyId)
+         FROM `chapters`
+         WHERE `storyId` = (:storyId)
          AND isStart = TRUE",
          [
             'storyId' => $storyId
-         ]); 
+         ])->fetch(); 
 
-         return $chapter->fetch(); 
+         return $chapter; 
      }
     
      function getChoices($chapterId){
@@ -50,10 +52,10 @@ function getChapter($chapterId){
         $choice = dbQuery(" 
          SELECT * 
          FROM `choices` 
-         WHERE `fromChapterId` = (:chapterId)", 
+         WHERE `fromChapterId` =  (:chapterId)", 
          [
             'chapterId' => $chapterId
-         ]); 
+         ])->fetchAll(); 
 
     return $choice; 
 }

@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  background-color: #3b280d; 
+  overflow: hidden;
+}
+
+.roomWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+.room {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: stretch;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.3);
+  border-bottom: 23px solid #5e3f22;
+  background-image: url(../images/wallpaper.jpg);
+  background-size: 220px; 
+  flex: 4; 
+}
+
+.wall {
+  box-shadow: 0 0px 6px rgb(76 49 24);
+}
+
+.left-wall, .right-wall{
+  flex-grow: 1;
+  display: flex; 
+  align-items: anchor-center; 
+}
+
+.center-wall {
+  max-width: 500px;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+
+}
+
+
+.bookshelf {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.4);
+  background-color: #5e3f22;
+  border: 14px solid rgb(94 63 34);
+  padding: 10px;
+  max-height: 100%;
+  max-width: 100%;
+  flex-grow: 1;
+}
+  
+.books-row {
+  background: #2a1c0f;
+  padding: 10px 20px;
+  display: flex;
+  gap: 25px;
+  box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.4);
+  padding: 5% 0% 5% 0%;
+  flex: 1 0 auto; 
+}
+
+.books {
+  width: 82px;
+  min-height: 30px; 
+  max-height: 123px;
+  background: #72271f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px;
+  border-radius: 2px;
+  box-shadow: inset -2px -2px 6px rgb(123 59 52), inset 2px 2px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s;
+  margin: auto;
+}
+
+.books a{
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.books:hover {
+  transform: scale(1.2);
+}
+
+.books.empty {
+  background-color: #72271f;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.floor {
+  flex:1; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  background-size: cover; 
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100%;
+}
+  
+.rug {
+  width: 85%;
+  display: flex;
+  height: 85%;
+  background: #72271f;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.rug.in{
+  width: 75%; 
+  background:rgb(232 212 177);
+}
+
+  
+.square {
+  height: 120px;
+  width: 120px;
+  background-color: #eae4d6;
+  padding: 3.5px;
+  line-height: 80px;
+  background-color: #ffffff;
+  border: 3px solid #110c06;
+  box-shadow: inset 0 0 5px rgb(58 41 20);
+}
+
+
+.poster{
+  padding: 3.5px;
+  line-height: 80px;
+  height: 166px;
+  width: 127px;
+  background-color: #ffffff;
+  border: 3px solid #110c06;
+  box-shadow: inset 0 0 5px rgb(58 41 20);
+}
+
+.wall-base {
+  bottom: 19vh;
+  width: 100%;
+  height: 22px;
+  background-color: #5e3f22;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.img-poster{
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+}
+
+@media only screen and (max-width: 1800px) {
+  body{
+    overflow: auto;
+  }
+  .books-row{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .room{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .left-wall,
+  .right-wall {
+    display: none;
+  }
+} 
+
+@media only screen and (max-width: 400px){
+  .floor{
+    display: none;
+  }
+  .center-wall{
+    overflow: visible;
+    height: 100%;
+  }
+  .room{
+    height: 100%;
+  }
+}
