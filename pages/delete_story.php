@@ -6,7 +6,13 @@ echoHeader("delete story");
 $storyId = $_REQUEST["storyId"] ?? null;
 if($storyId){
     archiveStory($storyId);
-    echo "<div> Success! </div>"; 
+    echo "<div class='nav-wrapper'> 
+        <div class='nav-column'>
+        <h3> Success! </h3>
+        <a href='delete_story.php'> Delete another story </a>
+        <a href='nav_page.php'> Back to navigate! </a>
+        </div>
+    </div>"; 
 } else {
     $stories = getAllStories(); 
 echo"

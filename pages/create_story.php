@@ -7,7 +7,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $description = $_REQUEST["description"]; 
     createStory($title, $description); 
 
-     echo "<div> Success! </div>"; 
+     echo "<div> Success! </div>
+        <a href='chat.php'> Now to generate! </a>"; 
 }else{
 
 echo "<form method='POST' action='' class='form-box'>

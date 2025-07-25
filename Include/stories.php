@@ -40,8 +40,8 @@ function getFirstChapter($storyId){
         SELECT chapters.*
         FROM `chapters`
         JOIN stories ON stories.storyId = chapters.storyId
-        WHERE `chapters.storyId` = (:storyId)
-        AND `stories.dateArchive` IS NULL
+        WHERE chapters.storyId = :storyId
+        AND stories.dateArchive IS NULL
         AND `isStart` = TRUE",
         [
             'storyId' => $storyId
