@@ -4,14 +4,14 @@ date_default_timezone_set('America/Chicago');
 session_start(); 
 
 include('connect.php');
-    
-/**
-* This should happen right after connect.php (config)
-* so other functions have access to the database
-*/
-
 include('db_query.php');
 include('common_components.php');
 include('backend/debug_output.php'); 
-include('stories.php'); 
+include('functions/stories.php'); 
+include('config.php'); 
+include('functions/prompt.php'); 
+include('functions/callAI.php'); 
+include('functions/format.php'); 
+include('functions/notionDatabase.php'); 
+
 
