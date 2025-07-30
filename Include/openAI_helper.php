@@ -117,9 +117,8 @@ function formatResponse($outputText){
 }
 
 function addToNotion($story, $output){
-
+    global $notionToken; 
     if($story['title'] != NULL){
-        $notionToken = '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';
         $databaseId = '22a8f8a6d80380119c89ecc6ab37a9f8';
         $title = $story['title'];
 

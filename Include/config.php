@@ -5,3 +5,4 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 $openaiApiKey = $_ENV['API_KEY'];
+$notionToken = $_ENV['NOTION_TOKEN']; 
