@@ -9,5 +9,6 @@ include('common_components.php');
 include('backend/debug_output.php'); 
 include('stories.php'); 
 include('config.php'); 
+include('openAI_helper.php'); 
 
 

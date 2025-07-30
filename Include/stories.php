@@ -53,7 +53,7 @@ function getChoices($chapterId){
         FROM `choices` 
         WHERE `fromChapterId` =  :fromChapterId", 
         [
-        'fromChapterId' => $chapterId
+            'fromChapterId' => $chapterId
         ])->fetchAll(); 
 
     return $choice; 
@@ -77,11 +77,6 @@ function getAllChats(){
     ")->fetchAll(); 
 
     return $chats; 
-}
-
-function getLastInsertedId() {
-    global $pdo; 
-    return $pdo->lastInsertId();
 }
 
 function insertChapter($storyId, $chapter){
