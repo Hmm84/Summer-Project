@@ -7,8 +7,11 @@ include('connect.php');
 include('db_query.php');
 include('common_components.php');
 include('backend/debug_output.php'); 
-include('stories.php'); 
-include('config.php'); 
-include('openAI_helper.php'); 
+include('functions/stories.php'); 
+include('functions/config.php'); 
+include('functions/prompt.php'); 
+include('functions/callAI.php'); 
+include('functions/format.php'); 
+include('functions/notionDatabase.php'); 
 
 
