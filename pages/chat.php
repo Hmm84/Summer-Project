@@ -50,12 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $chapter['isEnd'] = false;
             }
 
-            if ($chapter['isEnd']) {
-                if (preg_match('/\?\s*$/', $chapter['description'])) {
-                    $chapter['description'] .= " But the moment has passed, and your journey has reached its final chapter.";
-                }
-            }
-
             insertChapter($storyId, $chapter);  
             $realChapterId = getLastInsertedId();  
             $chapterIdMap[$aiChapterId] = $realChapterId;
