@@ -88,11 +88,9 @@ function insertChapter($storyId, $chapter){
         'description' => $chapter['description'],
         'dateCreated' => date("Y-m-d H:i:s"),
         'storyId' => $storyId,
-        'isStart' => $chapter['isStart'] ? 1 : 0, 
-        'isEnd' => $chapter['isEnd'] ? 1 : 0
+        'isStart' => $chapter['isStart'], 
+        'isEnd' => $chapter['isEnd']
     ]);
-
-    return getLastInsertedId(); 
 }
 
 function insertChoice( $fromChapterId, $toChapterId, $choiceText){
@@ -114,8 +112,3 @@ function markChapterAsNotEnd($chapterId) {
         'chapterId' => $chapterId
     ]);
 }
-
-
-
-
-

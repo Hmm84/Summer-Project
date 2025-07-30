@@ -36,45 +36,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit("JSON decode failed.");
     }
 
-    echo("This is the output "); 
     $output = formatResponse($outputText); 
-    debugOutput($output); 
  
+    $chapterIdMap = [];
 
     foreach ($output as $chapterWrapper) {
         foreach ($chapterWrapper as $aiChapterId => $chapter) {
             if (empty($chapter['choices']) && !$chapter['isEnd']) {
-            $chapter['isEnd'] = true;
+                $chapter['isEnd'] = true;
             }
 
             if (!empty($chapter['choices']) && $chapter['isEnd']) {
                 $chapter['isEnd'] = false;
             }
-        }
-    }
 
-    foreach ($output as $chapterWrapper) {
-        foreach ($chapterWrapper as $aiChapterId => $chapter) {
             if ($chapter['isEnd']) {
                 if (preg_match('/\?\s*$/', $chapter['description'])) {
                     $chapter['description'] .= " But the moment has passed, and your journey has reached its final chapter.";
                 }
             }
-        }
-    }
 
-    $chapterIdMap = [];
-
-    foreach ($output as $chapterWrapper) {
-        foreach ($chapterWrapper as $aiChapterId => $chapter) {
             insertChapter($storyId, $chapter);  
             $realChapterId = getLastInsertedId();  
             $chapterIdMap[$aiChapterId] = $realChapterId;
-        }
-    }
 
-    foreach ($output as $chapterWrapper) {
-        foreach ($chapterWrapper as $aiChapterId => $chapter) {
             if (!empty($chapter['choices'])) {
                 $realFromId = $chapterIdMap[$aiChapterId] ?? null;
 
@@ -90,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     }
-
+    
     addToNotion($story, $output); 
 
 }
