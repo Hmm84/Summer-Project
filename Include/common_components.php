@@ -8,12 +8,12 @@ function echoHeader($pageTitle){
 			<meta charset='utf-8'>
 			<link rel='stylesheet' href='../css/book.css'> 
 			<link rel='stylesheet' href='../css/library.css'> 
+			<link rel='stylesheet' href='../css/chat.css'> 
 		</head>
 		<body>
 	"; 
 }
 
-//If you want a footer you can add one this is the bare minimum
 function echoFooter(){
 	echo "</body>
 	</html>
