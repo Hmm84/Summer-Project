@@ -1,8 +1,8 @@
 <?php
 function addToNotion($story, $output){
     global $notionToken; 
+    global $databaseId; 
     if($story['title'] != NULL){
-        $databaseId = '22a8f8a6d80380119c89ecc6ab37a9f8';
         $title = $story['title'];
 
         $notionData = [

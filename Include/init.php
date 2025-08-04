@@ -9,9 +9,7 @@ include('common_components.php');
 include('backend/debug_output.php'); 
 include('functions/stories.php'); 
 include('config.php'); 
-include('functions/prompt.php'); 
-include('functions/callAI.php'); 
-include('functions/format.php'); 
+include('functions/generateAi.php'); 
 include('functions/notionDatabase.php'); 
 
 

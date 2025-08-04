@@ -91,6 +91,8 @@ function insertChapter($storyId, $chapter){
         'isStart' => $chapter['isStart'], 
         'isEnd' => $chapter['isEnd']
     ]);
+
+    return getLastInsertedId(); 
 }
 
 function insertChoice( $fromChapterId, $toChapterId, $choiceText){

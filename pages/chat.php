@@ -35,40 +35,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
         exit("JSON decode failed.");
     }
+    
 
-    $output = formatResponse($outputText); 
- 
+    $output = json_decode($outputText); 
+
     $chapterIdMap = [];
 
     foreach ($output as $chapterWrapper) {
         foreach ($chapterWrapper as $aiChapterId => $chapter) {
-            if (empty($chapter['choices']) && !$chapter['isEnd']) {
-                $chapter['isEnd'] = true;
-            }
-
-            if (!empty($chapter['choices']) && $chapter['isEnd']) {
-                $chapter['isEnd'] = false;
-            }
-
-            insertChapter($storyId, $chapter);  
-            $realChapterId = getLastInsertedId();  
+            $realChapterId = insertChapter($storyId, $chapter);  
             $chapterIdMap[$aiChapterId] = $realChapterId;
+            $realFromId = $chapterIdMap[$aiChapterId] ?? null;
 
-            if (!empty($chapter['choices'])) {
-                $realFromId = $chapterIdMap[$aiChapterId] ?? null;
-
+            if ($realFromId !== null && !empty($chapter['choices'])) {
                 foreach ($chapter['choices'] as $choice) {
                     $choiceText = $choice['text'];
                     $nextAiChapterId = $choice['nextChapterId'];
                     $realToId = $chapterIdMap[$nextAiChapterId] ?? null;
 
-                    if ($realFromId !== null && $realToId !== null) {
+                    if ($realToId !== null) {
                         insertChoice($realFromId, $realToId, $choiceText);
-                    } 
+                    }
                 }
             }
         }
     }
+    
     
     addToNotion($story, $output); 
 
