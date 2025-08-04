@@ -4,10 +4,42 @@ $stories = getAllStories();
 $totalBooks = count($stories);
 $totalRows = 6;
 $booksPerRow = 2;
+
+if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!empty($_SESSION["storyId"])) {
+    $story = getStory($_SESSION["storyId"]); 
+    $chapter = getChapter($_SESSION["chapterId"]); 
+    echo "
+    <div class='popup-overlay'>
+      <div class='popup-box'>
+        <h3>Resume Your Progress</h3>
+        <div class='nav-columns'>
+        <p>Would you like to continue reading <b>\"".$story["title"]."\"</b></p>
+        <a href='view_story.php?toChapterId=".$_SESSION['chapterId']."'>Continue The Story</a>
+        </div>
+        <form method='post'>
+            <button class='close-btn' name='close_popup'>Close</button>
+        </form>
+      </div>
+    </div>
+    ";
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['close_popup'])) {
+    unset($_SESSION['storyId']);
+    unset($_SESSION['chapterId']); // optional
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+
 echoHeader("homePage", "libraryBody"); 
 
+echo "
 
-echo "<div class='roomWrapper'> 
+<div class='roomWrapper'> 
     <div class='room'>
         <div class='wall left-wall'>
             <div class='square' style='transform: translate(-91px, -227px); order: 1;'>

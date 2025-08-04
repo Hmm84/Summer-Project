@@ -1,10 +1,12 @@
 <?php
 include("../include/init.php");
-echoHeader("homePage"); 
+
+echoHeader("homePage");
 
 if (!empty($_REQUEST["storyId"]) && !isset($_GET["read"])) {
     $storyId = $_REQUEST["storyId"];
     $story = getStory($storyId);
+    $_SESSION["storyId"] = $storyId;
 
 } else if (!empty($_GET["storyId"]) && isset($_GET["read"])) {
     $storyId = $_GET["storyId"];
@@ -15,6 +17,7 @@ if (!empty($_REQUEST["storyId"]) && !isset($_GET["read"])) {
 
 } else if (!empty($_REQUEST["toChapterId"])) {
     $chapterId = $_REQUEST["toChapterId"];
+    $_SESSION["chapterId"] = $chapterId;
     $chapter = getChapter($chapterId);
     if ($chapter) {
         $choices = getChoices($chapter['chapterId']);

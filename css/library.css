@@ -32,17 +32,17 @@
   align-items: anchor-center; 
 }
 
-.center-wall {
+/* .center-wall {
   max-width: 500px;
   width: 100%;
   min-height: 100%;
   overflow: hidden;
   display: flex;
 
-}
+} */
 
 
-.bookshelf {
+/* .bookshelf {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -53,7 +53,7 @@
   max-height: 100%;
   max-width: 100%;
   flex-grow: 1;
-}
+} */
   
 .books-row {
   background: #2a1c0f;
@@ -63,22 +63,47 @@
   box-shadow: inset 0 0px 6px rgba(0, 0, 0, 0.4);
   padding: 5% 0% 5% 0%;
   flex: 1 0 auto; 
+  justify-content: center;
+  flex-wrap: wrap;
+
 }
 
+.center-wall {
+  max-width: 500px;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  overflow: hidden; /* Allow scrolling inside bookshelf instead */
+}
+
+.bookshelf {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #5e3f22;
+  border: 14px solid rgb(94 63 34);
+  padding: 10px;
+  flex-grow: 1;
+  max-height: calc(100vh - 200px); /* limit height so floor shows */
+  overflow-y: auto; /* scroll if too many books */
+}
+
+
 .books {
-  width: 82px;
-  min-height: 30px; 
-  max-height: 123px;
+  width: 100px;        /* fixed width */
+  height: 120px;       /* fixed height */
   background: #72271f;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 4px;
+  padding: 10px;
   border-radius: 2px;
   box-shadow: inset -2px -2px 6px rgb(123 59 52), inset 2px 2px 4px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s;
   margin: auto;
+  overflow: hidden;     /* hide overflowing text */
+
 }
 
 .books a{
@@ -160,6 +185,57 @@
   object-fit: cover; 
 }
 
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  max-width: 90vw;
+}
+
+.nav-columns a {
+    font-size: 18px;
+    padding: 16px 24px;
+    background-color: #ab2417;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+    margin: 8px 0;
+    padding: 10px 20px;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.nav-columns a:hover {
+  background-color: #5c3c1e;
+}
+
+.close-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #aaa;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
 @media only screen and (max-width: 1800px) {
   body{
     overflow: auto;
@@ -192,3 +268,4 @@
     height: 100%;
   }
 }
+
