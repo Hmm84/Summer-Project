@@ -45,15 +45,11 @@
 }
 
 .playbtn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-7%, -145%);
     padding: 10px 20px;
     border: 1px solid #ffffff;
     font-weight: bold;
     cursor: pointer;
-    z-index: 1;
     font-family: Georgia, serif;
     background-color: transparent;
     border: none;
