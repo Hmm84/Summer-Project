@@ -144,8 +144,3 @@ function createStory($title, $description){
             'dateCreated' => date("Y-m-d H:i:s")
         ]); 
 }
-
-
-
-
-
