@@ -3,7 +3,7 @@ include("../include/init.php");
 $stories = getAllStories();
 $totalBooks = count($stories);
 $totalRows = 6;
-$booksPerRow = 2;
+$booksPerRow = 4;
 
 if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -14,25 +14,39 @@ if (!empty($_SESSION["storyId"])) {
     $chapter = getChapter($_SESSION["chapterId"]); 
     echo "
     <div class='popup-overlay'>
-      <div class='popup-box'>
-        <h3>Resume Your Progress</h3>
-        <div class='nav-columns'>
-        <p>Would you like to continue reading <b>\"".$story["title"]."\"</b></p>
-        <a href='view_story.php?toChapterId=".$_SESSION['chapterId']."'>Continue The Story</a>
+        <div class='modal'>
+            <p class='message'>Would you like to continue reading <b>\"".$story["title"]."\"</b></p>
+            <div class='options'>
+            <a class='btn' style='height: 40%' href='view_story.php?toChapterId=".$_SESSION['chapterId']."'>Yes</a>
+            <form method='post'>
+                <button class='btn' name='close_popup'>No</button>
+            </form>
+            </div>
         </div>
-        <form method='post'>
-            <button class='close-btn' name='close_popup'>Close</button>
-        </form>
       </div>
-    </div>
     ";
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['close_popup'])) {
     unset($_SESSION['storyId']);
-    unset($_SESSION['chapterId']); // optional
+    unset($_SESSION['chapterId']); 
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['play'])) {
+   echo "
+    <div class='popup-overlay'>
+        <div class='modal'>
+            <p class='message'> This is how you play </b></p>
+            <div class='options'>
+            <form method='post'>
+                <button class='btn' name='close_popup'>Close</button>
+            </form>
+            </div>
+        </div>
+      </div>
+    ";
 }
 
 echoHeader("homePage", "library_body"); 
@@ -63,29 +77,63 @@ echo "
 
     <div class='wall center-wall'>
         <div class='bookshelf' >";
-            for ($i = 0; $i < $totalRows; $i++) {
-                echo "<div class='books-row'>";
-                for ($j = 0; $j < $booksPerRow; $j++) {
-                    $index = $i * $booksPerRow + $j;
-                    if ($index < $totalBooks) {
-                        $story = $stories[$index];
-                                echo "<div class='books'>
-                                        <a href='view_story.php?storyId=" .$story['storyId']. "'>" .$story['title']. "</a>
-                                    </div>";
-                            } else {
-                                echo "<div class='books empty'></div>";
-                            }
-                        }
-        echo "</div>";
-                    }
+        for ($i = 0; $i < $totalRows; $i++) {
+            echo "<div class='books-row'>";
+            
+            for ($j = 0; $j < $booksPerRow; $j++) {
+                $index = $i * $booksPerRow + $j;
+                
+                if (isset($stories[$index])) {
+                    $story = $stories[$index];
+                    
+                    $isCodeBook = strpos(strtolower($story['title']), 'code') !== false;
+
+                    $bookClass = $isCodeBook ? 'books special-book' : 'books';
+
+                    echo "<div class='$bookClass'>
+                            <div class='book-spine'>
+                                <a href='view_story.php?storyId=" .$story['storyId']. "'>" .$story['title']. "</a>
+                            </div>
+                            </div>";
+                } else {
+                    echo "<div class='book decor'>
+                            <img src='../images/plant.png' alt='plant' />
+                            </div>";
+                }
+            }
+
+            echo "</div>";
+        }
+  
+
+
+
+        //     for ($i = 0; $i < $totalRows; $i++) {
+        //         echo "<div class='books-row'>";
+        //         for ($j = 0; $j < $booksPerRow; $j++) {
+        //             $index = $i * $booksPerRow + $j;
+        //             if ($index < $totalBooks) {
+        //                 $story = $stories[$index];
+        //                         echo "<div class='books'>
+        //                                 <a href='view_story.php?storyId=" .$story['storyId']. "'>" .$story['title']. "</a>
+        //                             </div>";
+        //                     } else {
+        //                         echo "<div class='books empty'></div>";
+        //                     }
+        //                 }
+        // echo "</div>";
+        //             }
 
         echo "</div>
     </div>
 
     <div class='wall right-wall'>
+        <form method='post'>
         <div class='poster' style='height: 255px; width: 323px; transform: translate(62px, -239px);'>
-        <h1> HOW TO PLAY </h1> 
-        </div>
+        <img class='img-poster'src='../images/play.png'>
+        <button class='playbtn' name='play'>HOW TO PLAY</button> 
+        </form>
+    </div>
 
         <div class='square' style='transform: translate(-5px, 16px);'>
             <img class='img-poster'src='../images/kitten_heart.jpg' />
