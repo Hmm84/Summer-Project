@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['close_popup'])) {
     exit;
 }
 
-echoHeader("homePage", "libraryBody"); 
+echoHeader("homePage", "library_body"); 
 
 echo "
 
