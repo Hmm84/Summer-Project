@@ -2,6 +2,7 @@
 function getAllStories(){
     $stories = dbQuery("
         SELECT * FROM `stories`
+        WHERE dateArchive IS NULL 
     ")->fetchAll(); 
 
     return $stories; 
@@ -12,6 +13,7 @@ function getStory($storyId){
     SELECT * 
     FROM `stories` 
     WHERE `storyId` = (:storyId)
+    AND dateArchive IS NULL
     ",
     [
         'storyId' => $storyId
@@ -35,9 +37,11 @@ function getChapter($chapterId){
 function getFirstChapter($storyId){
 
     $chapter = dbQuery(" 
-        SELECT *
+        SELECT chapters.*
         FROM `chapters`
-        WHERE `storyId` = (:storyId)
+        JOIN stories ON stories.storyId = chapters.storyId
+        WHERE `chapters.storyId` = (:storyId)
+        AND `stories.dateArchive` IS NULL
         AND `isStart` = TRUE",
         [
             'storyId' => $storyId
@@ -53,7 +57,7 @@ function getChoices($chapterId){
         FROM `choices` 
         WHERE `fromChapterId` =  :fromChapterId", 
         [
-            'fromChapterId' => $chapterId
+        'fromChapterId' => $chapterId
         ])->fetchAll(); 
 
     return $choice; 
@@ -79,6 +83,11 @@ function getAllChats(){
     return $chats; 
 }
 
+function getLastInsertedId() {
+    global $pdo; 
+    return $pdo->lastInsertId();
+}
+
 function insertChapter($storyId, $chapter){
     dbQuery("
         INSERT INTO `chapters` (`title`, `description`, `dateCreated`, `storyId`, `isStart`, `isEnd`)
@@ -88,8 +97,8 @@ function insertChapter($storyId, $chapter){
         'description' => $chapter['description'],
         'dateCreated' => date("Y-m-d H:i:s"),
         'storyId' => $storyId,
-        'isStart' => $chapter['isStart'], 
-        'isEnd' => $chapter['isEnd']
+        'isStart' => $chapter['isStart'] ? 1 : 0, 
+        'isEnd' => $chapter['isEnd'] ? 1 : 0
     ]);
 
     return getLastInsertedId(); 
@@ -113,4 +122,25 @@ function markChapterAsNotEnd($chapterId) {
     ", [
         'chapterId' => $chapterId
     ]);
+}
+
+function archiveStory($storyId){
+    dbquery("
+    UPDATE `stories`
+    SET `dateArchive` = :dateArchive
+    WHERE `storyId` = :storyId
+    ", [
+        'dateArchive' => date("Y-m-d H:i:s"), 
+        'storyId' => $storyId
+    ]); 
+}
+
+function createStory($title, $description){
+    dbquery("
+        INSERT INTO `stories` (`title`, `description`, `dateCreated`) 
+        VALUES (:title, :description, :dateCreated)", [
+            'title' => $title,
+            'description' => $description,
+            'dateCreated' => date("Y-m-d H:i:s")
+        ]); 
 }
