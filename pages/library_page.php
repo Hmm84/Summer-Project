@@ -3,7 +3,7 @@ include("../include/init.php");
 $stories = getAllStories();
 $totalBooks = count($stories);
 $totalRows = 4;
-$booksPerRow = 4;
+$booksPerRowOptions = [3, 4, 5];
 
 if(session_id() == '' || !isset($_SESSION) || session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -77,7 +77,9 @@ echo "
 
     <div class='wall center-wall'>
         <div class='bookshelf' >";
+        $fillerTitles = ['The Wandering Tale', 'Echoes of Dawn', 'Mystic Scrolls', 'Legends Reborn', 'The Hollow Pages'];
         for ($i = 0; $i < $totalRows; $i++) {
+            $booksPerRow = $booksPerRowOptions[array_rand($booksPerRowOptions)];
             echo "<div class='books-row'>";
             
             for ($j = 0; $j < $booksPerRow; $j++) {
@@ -96,9 +98,10 @@ echo "
                             </div>
                             </div>";
                 } else {
-                    echo "<div class='book decor'>
-                            <img src='../images/plant.png' alt='plant' />
-                            </div>";
+                    $title = $fillerTitles[array_rand($fillerTitles)];
+                    echo "<div class='books filler-book'>
+                            <span class='book-spine'>$title</span>
+                        </div>";
                 }
             }
 

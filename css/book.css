@@ -1,4 +1,4 @@
-.book {
+/* .book {
     display: flex;
     width: 1000px;
     border: 2px solid black;
@@ -42,7 +42,89 @@
 
 .choice:hover {
     background-color: #eee;
+} */
+.libraryBackground {
+    background: url('library-background.jpg') center center / cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+/* Hardcover container */
+.bookHardcover {
+    display: flex;
+    position: relative;
+    background: #d2b48c;
+    border: 5px solid #5b3a29;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    overflow: hidden;
+    width: 800px;
+    height: 700px;
+}
+
+/* Page styling */
+.bookPage {
+    padding: 25px;
+    background: #fdf6e3;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Georgia', serif;
+    color: #333;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%; 
+}
+
+/* Left page with border at spine */
+.bookPage.leftPage {
+    border-right: 1px solid rgba(0,0,0,0.2);
+}
+
+/* Right page - center the buttons */
+.bookPage.rightPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* vertical center */
+    align-items: center;      /* horizontal center */
+    gap: 15px;                 /* spacing between buttons */
+}
+
+.bg-img {
+  position: absolute; /* Take the image out of normal flow */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1; /* Push it behind */
+}
+
+/* Buttons */
+.bookPage .bookBtn {
+    padding: 10px 15px;
+    border: 1px solid #333;
+    background: #fdf6e3;
+    cursor: pointer;
+    margin: 20px;
+    border-radius: 24px;
+    text-decoration: none;
+    color: black;
+    font-family: inherit;
+}
+
+.bookBtn a{
+    text-decoration: none;
+    color: black;
+    font-family: inherit;
+}
+
+.bookPage .bookBtn:hover {
+    background: #f0e5cf;
+}
+
 
 .playbtn {
     transform: translate(-7%, -145%);

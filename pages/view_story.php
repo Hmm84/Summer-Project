@@ -23,39 +23,41 @@ if (!empty($_REQUEST["storyId"]) && !isset($_GET["read"])) {
         $choices = getChoices($chapter['chapterId']);
     }
 }
-echo "<div class='book'>"; 
+echo "<div class='libraryBackground'>
+<div class='bookHardcover'>"; 
     if (!empty($story)) { 
-        echo "<div class='left-page'>
+        echo "<div class='bookPage left-page'>
             <h2>".$story['title']." </h2>
             <p>".$story['description']."</p>
         </div>
-        <div class='right-page'>
-            <a class='choice' href='view_story.php?storyId=". $story['storyId']."&read=true'>Read This Story</a><br>
-            <a class='choice' href='library_page.php'>Go Back</a>
+        <div class='bookPage right-page'>
+            <a class='bookBtn' href='view_story.php?storyId=". $story['storyId']."&read=true'>Read This Story</a><br>
+            <a class='bookBtn' href='library_page.php'>Go Back</a>
         </div>"; 
 
     } elseif (!empty($chapter)) { 
-        echo "<div class='left-page'>
+        echo "<div class='bookPage left-page'>
             <h2>". $chapter['title']."</h2>
             <p>".$chapter['description']."</p>
         </div>
-        <div class='right-page'>"; 
+        <div class='bookPage right-page'>"; 
             foreach ($choices as $choice) { 
-                echo"<div class='choice'>
+                echo"<div class='bookBtn'>
                     <a href='view_story.php?toChapterId=".$choice['toChapterId']."'>".$choice['choiceText']."</a>
                 </div>"; 
             } if ($chapter['isEnd']) { 
-                echo "<p>This is the end!</p>
-                <a class='choice' href='view_story.php?storyId=".$chapter['storyId']."&read=true'>Read Again</a><br>
-                <a class='choice' href='library_page.php'>Try Another Story</a>"; 
+                echo "<p style='text-align: center;'>This is the end!</p>
+                <a class='bookBtn' href='view_story.php?storyId=".$chapter['storyId']."&read=true'>Read Again</a><br>
+                <a class='bookBtn' href='library_page.php'>Try Another Story</a>"; 
             } echo "
         </div>"; } else { echo"
-        <div class='left-page'>
+        <div class='bookPage left-page'>
             <h2>Sorry, couldn't find the story or chapter.</h2>
         </div>
-        <div class='right-page'>
-            <a class='choice' href='library_page.php'>Go Back</a>
+        <div class='bookPage right-page'>
+            <a class='bookbtn' href='library_page.php'>Go Back</a>
         </div>
         "; } echo " 
+</div>
 </div>"; 
 echoFooter(); 
