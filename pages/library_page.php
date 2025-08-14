@@ -6,8 +6,6 @@ $totalBooks = count($stories);
 $totalRows = 4;
 $booksPerRowOptions = [5, 6, 7];
 
-
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }

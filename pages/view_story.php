@@ -1,7 +1,7 @@
 <?php
 include("../include/init.php");
 
-echoHeader("homePage");
+echoHeader("Book", "book-background");
 
 if (!empty($_REQUEST["storyId"]) && !isset($_GET["read"])) {
     $storyId = $_REQUEST["storyId"];

@@ -6,11 +6,11 @@ echoHeader("Navigation Page");
 echo "
 <div class='nav-wrapper'>
   <div class='nav-column'>
-    <a href='library_page.php'>The library</a>
-    <a href='delete_story.php'>Delete a story</a>
-    <a href='create_story.php' >Create a story</a>
-    <a href='chat.php' >Generate a story</a>
-    <a href='select_story.php'> Edit a story </a>
+    <a target='_blank' href='library_page.php'>The library</a>
+    <a target='_blank' href='delete_story.php'>Delete a story</a>
+    <a target='_blank' href='create_story.php' >Create a story</a>
+    <a target='_blank' href='chat.php' >Generate a story</a>
+    <a target='_blank' href='select_story.php'> Edit a story </a>
   </div>
 </div>
 

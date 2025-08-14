@@ -239,37 +239,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-echo "<!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-     <link rel='stylesheet' href='../css/chat.css'> 
-    <title>Chat API Test</title>
-</head>
-<body>
+echoHeader("Chat", "form-body"); 
 
-
-
-     <form method='POST' action='pages/chat.php'class='form-box'>
-        <label> Create a Story </label>
+echo "<form method='POST' action='chat.php'class='form-box'>
+        <h2> Create a Story </h2>
         <label for='stories'> Story: </label>
         <select id='stories' name='storyId'>";
             foreach($stories as $story){
                 echo "<option value=".$story['storyId'].">".$story['title']."</option>"; 
             }
         echo "</select> 
-        <label> Number of Chapters: </label>
-        <input type='number' name='numChapters' >
-          <label> Tone: </label>
-        <input type='text' name='tone'>
-        <label> Setting: </label>
-        <input type='text' name='setting'>
-        <label> Other details: </label>
-        <input type='text' name='twist'>
+        <label for='tone'>Choose a Tone:</label>
+        <select name='tone' id='tone'>
+            <option value='Adventure'>Adventure</option>
+            <option value='Funny'>Funny</option>
+            <option value='Mysterious'>Mysterious</option>
+            <option value='Dark'>Dark</option>
+            <option value='Romantic'>Romantic</option>
+            <option value='Fantasy'>Fantasy</option>
+            <option value='Sci-Fi'>Sci-Fi</option>
+            <option value='Wholesome'>Wholesome</option>
+            <option value='Dramatic'>Dramatic</option>
+            <option value='Sad'>Sad</option>
+            <option value='Empowering'>Empowering</option>
+            <option value='Spooky'>Spooky</option>
+            <option value='Surreal'>Surreal</option>
+            <option value='Historical'>Historical</option>
+        </select>
+        <label for='numChapters'> Number of Chapters: </label>
+        <input type='number' id='numChapters' name='numChapters' min='1' max='10'>
+        <label for='setting'> Setting: </label>
+        <input type='text' id='setting' name='setting'>
+        <label for='twist'> Other details: </label>
+        <input type='text' id='twist' name='twist'>
         <button class='form-buttons' type='submit'>Send</button>
-    </form>
+    </form>"; 
+echoFooter(); 
 
-</body>
-</html>"; 
+
+ 
 

@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<p style='color: green;'> All updates saved!</p>";
 }
 
-echoHeader("Edit stories"); 
+echoHeader("Edit stories", "edit-story-body"); 
 
 echo "<form method='POST' class='form-box'>
         <input type='hidden' name='action' value='update_story'>

@@ -3,13 +3,13 @@ include("../Include/init.php");
 
 $stories = getAllStories();
 
-echoHeader("select story"); 
+echoHeader("select story", "form-body"); 
 
 if (count($stories) === 0) {
     echo "<p>No stories found.</p>";
 } else {
     echo "<form method='GET' action='edit_story.php' class='form-box'>
-            <label for='storyId'>Choose a story:</label><br><br>
+            <h2 for='storyId'>Choose a story:</h2><br><br>
             <select name='id' id='storyId' required>";
 
     foreach ($stories as $story) {

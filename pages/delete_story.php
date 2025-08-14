@@ -1,7 +1,7 @@
 <?php
 
 include("../include/init.php"); 
-echoHeader("delete story"); 
+echoHeader("delete story", "form-body"); 
 
 $storyId = $_REQUEST["storyId"] ?? null;
 if($storyId){
@@ -17,16 +17,14 @@ if($storyId){
     $stories = getAllStories(); 
 echo"
     <form method='POST' action='' class='form-box'>
-        <h3> Delete a Story </h3>
+        <h2> Delete a Story </h2>
         <label for='stories'> Story: </label>
         <select id='stories' name='storyId'>";
             foreach($stories as $story){
                 echo "<option value=".$story['storyId'].">".$story['title']."</option>"; 
             }
         echo "</select> 
-        <div class='form-buttons'>
-            <button type='submit'>Submit</button>
-        </div>
+            <button class='form-buttons' type='submit'>Submit</button>
     </form>"; 
 }
 echoFooter(); 
