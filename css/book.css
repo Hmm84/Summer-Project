@@ -1,48 +1,4 @@
-/* .book {
-    display: flex;
-    width: 1000px;
-    border: 2px solid black;
-    background-color: #f7f3e9;
-    border-radius: 8px;
-    overflow: hidden;
-    font-family: 'Georgia', serif;
-}
 
-.left-page, .right-page {
-    width: 50%;
-    padding: 30px;
-    box-sizing: border-box;
-}
-
-.left-page {
-    border-right: 2px solid #ccc;
-    background-color: #fffdf6;
-}
-
-.right-page {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-    background-color: #fffaf0;
-}
-
-.choice {
-    padding: 15px 25px;
-    background-color: white;
-    border: 2px solid black;
-    border-radius: 10px;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    width: 70%;
-    text-align: center;
-}
-
-.choice:hover {
-    background-color: #eee;
-} */
 .libraryBackground {
     background: url('library-background.jpg') center center / cover no-repeat;
     min-height: 100vh;
@@ -51,7 +7,7 @@
     align-items: center;
 }
 
-/* Hardcover container */
+
 .bookHardcover {
     display: flex;
     position: relative;
@@ -64,7 +20,6 @@
     height: 700px;
 }
 
-/* Page styling */
 .bookPage {
     padding: 25px;
     background: #fdf6e3;
@@ -79,30 +34,30 @@
     width: 100%; 
 }
 
-/* Left page with border at spine */
+
 .bookPage.leftPage {
     border-right: 1px solid rgba(0,0,0,0.2);
 }
 
-/* Right page - center the buttons */
+
 .bookPage.rightPage {
     display: flex;
     flex-direction: column;
-    justify-content: center;  /* vertical center */
-    align-items: center;      /* horizontal center */
-    gap: 15px;                 /* spacing between buttons */
+    justify-content: center;  
+    align-items: center;      
+    gap: 15px;                 
 }
 
 .bg-img {
-  position: absolute; /* Take the image out of normal flow */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: auto;
-  z-index: -1; /* Push it behind */
+  z-index: -1; 
 }
 
-/* Buttons */
+
 .bookPage .bookBtn {
     padding: 10px 15px;
     border: 1px solid #333;
@@ -127,7 +82,7 @@
 
 
 .playbtn {
-    transform: translate(-7%, -145%);
+    transform: translate(0%, -144%);
     padding: 10px 20px;
     border: 1px solid #ffffff;
     font-weight: bold;
@@ -136,10 +91,15 @@
     background-color: transparent;
     border: none;
     color: white;
-    FONT-SIZE: larger;
+    FONT-SIZE: xx-large;
+    opacity: 0;
 }
 
 .playbtn:hover{
-   color: rgb(216, 0, 0); 
-   background-color: rgb(0, 0, 0);
+    opacity: 100; 
+   color: #2f3a22;
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    transform: translate(0%, -100%);
 }

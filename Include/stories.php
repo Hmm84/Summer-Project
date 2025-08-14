@@ -179,28 +179,28 @@ function updateStory($storyId, $title, $description) {
     ]);
 }
 
-function updateChapter($id, $desc, $isStart, $isEnd) {
+function updateChapter($chapterId, $desc, $isStart, $isEnd) {
     dbQuery("
         UPDATE chapters
         SET description = (:desc), isStart = (:isStart), isEnd = (:isEnd)
-        WHERE chapterId = (:id)
+        WHERE chapterId = (:chapterId)
     ", [
         'desc' => $desc,
         'isStart' => $isStart,
         'isEnd' => $isEnd,
-        'id' => $id
+        'chapterId' => $chapterId
     ]);
 }
 
-function updateChoice($id, $text, $nextId) {
+function updateChoice($choiceId, $text, $nextId) {
     dbQuery("
         UPDATE choices
         SET text = (:text), nextChapterId = (:nextId)
-        WHERE id = (:id)
+        WHERE id = (:choiceId)
     ", [
         'text' => $text,
         'nextId' => $nextId,
-        'id' => $id
+        'choiceId' => $choiceId
     ]);
 }
 
