@@ -10,6 +10,8 @@ function echoHeader($pageTitle, $bodyClasses = ""){
 			<link rel='stylesheet' href='../css/library.css'> 
 			<link rel='stylesheet' href='../css/chat.css'> 
 			<link rel='stylesheet' href='../css/home.css'> 
+			<script src='../js/bookAnimation.js' defer></script>
+
 		</head>
 		<body class='$bodyClasses'>
 	"; 

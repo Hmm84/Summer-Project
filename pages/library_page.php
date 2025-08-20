@@ -157,11 +157,15 @@ for ($i = 0; $i < $totalRows; $i++) {
             $bookClass = ($isCodeBook ? 'books special-book' : 'books') . " book-{$color}";
 
             echo "
-            <div class='" . $bookClass . "'>
-              <div class='book-spine'>
-                <a href='view_story.php?storyId=" . $story['storyId'] . "'>" . htmlspecialchars($story['title']) . "</a>
+            <div class='" . $bookClass . "' data-story-id='" . $story['storyId'] . "'>
+            <div class='books-wrapper'>
+              <div class='book-spine'>" . htmlspecialchars($story['title']) . "</div>
+              <div class='books-cover'>
+                <span class='books-title'>" . htmlspecialchars($story['title']) . "</span>
               </div>
+              <div class='books-back'></div>
             </div>
+          </div>
             ";
         } else {
             $title = $fillerTitles[array_rand($fillerTitles)];
@@ -208,6 +212,7 @@ echo "
     <div class='rug'><div class='rug in'></div></div>
   </div>
 </div>
+
 ";
 
 echoFooter();

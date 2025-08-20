@@ -133,3 +133,53 @@
     height: 100%;
     transform: translate(0%, -100%);
 }
+.book {
+  perspective: 2000px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.books-wrapper {
+  width: 50px;
+  height: 150px;
+  transform-style: preserve-3d;
+  transition: transform 1s ease;
+}
+
+.books-spine,
+.books-cover,
+.books-back {
+  position: absolute;
+  width: 50px;
+  height: 150px;
+  background: #8B4513;
+  backface-visibility: hidden;
+}
+
+/* Cover */
+.books-cover {
+  transform: rotateY(90deg) translateZ(25px);
+  background: #E0C097;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Back */
+.books-back {
+  transform: rotateY(-90deg) translateZ(25px);
+  background: #D3D3D3;
+}
+
+.books.float .books-wrapper {
+  transform: translateZ(150px) scale(1.8);
+}
+
+.books.show-cover .books-wrapper {
+  transform: rotateY(90deg) translateZ(25px) scale(1.8);
+}
+
+.books.open .books-wrapper {
+  transform: rotateY(0deg) translateZ(25px) scale(1.8);
+}
